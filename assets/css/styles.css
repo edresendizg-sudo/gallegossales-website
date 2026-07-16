@@ -4,17 +4,17 @@
    ========================================================= */
 
 :root {
-  --navy: #0f2038;
-  --navy-800: #16304f;
-  --navy-700: #1d3d63;
-  --steel: #4a6787;
-  --steel-100: #eef2f7;
-  --steel-200: #dbe3ee;
-  --accent: #e2571f;      /* safety orange */
-  --accent-dark: #c1450f;
-  --ink: #1a2230;
-  --muted: #5a6675;
-  --line: #e3e8ef;
+  --navy: #26292e;        /* graphite (matches logo dark ribbon) */
+  --navy-800: #2f333a;
+  --navy-700: #3a3f47;
+  --steel: #6b7280;       /* neutral gray */
+  --steel-100: #f1f2f4;
+  --steel-200: #dfe2e7;
+  --accent: #d81f27;      /* Gallegos red */
+  --accent-dark: #b0141a;
+  --ink: #1e2126;
+  --muted: #5c626b;
+  --line: #e4e6ea;
   --white: #ffffff;
   --bg: #ffffff;
   --bg-soft: #f5f7fa;
@@ -116,6 +116,8 @@ p { margin: 0 0 1rem; }
   white-space: nowrap;
 }
 .brand:hover { text-decoration: none; }
+.brand-logo { height: 46px; width: auto; display: block; }
+@media (max-width: 420px) { .brand-logo { height: 40px; } }
 .brand .mark {
   display: inline-flex; align-items: center; justify-content: center;
   width: 34px; height: 34px; border-radius: 8px;
@@ -184,8 +186,8 @@ p { margin: 0 0 1rem; }
   position: relative;
   color: #fff;
   background:
-    radial-gradient(1100px 500px at 80% -10%, rgba(226,87,31,.22), transparent 60%),
-    linear-gradient(160deg, var(--navy) 0%, var(--navy-800) 55%, #0b1a30 100%);
+    radial-gradient(1100px 500px at 80% -10%, rgba(216,31,39,.28), transparent 60%),
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-800) 55%, #1a1c20 100%);
   overflow: hidden;
 }
 .hero::after {
@@ -302,7 +304,7 @@ p { margin: 0 0 1rem; }
 /* ---------- CTA band ---------- */
 .cta-band {
   background:
-    radial-gradient(700px 300px at 90% 0%, rgba(226,87,31,.22), transparent 60%),
+    radial-gradient(700px 300px at 90% 0%, rgba(216,31,39,.28), transparent 60%),
     linear-gradient(120deg, var(--navy) 0%, var(--navy-800) 100%);
   color: #fff; border-radius: var(--radius-lg);
   padding: clamp(2rem, 5vw, 3rem);

@@ -35,9 +35,8 @@ function header(active) {
   return `  <header class="site-header">
     <div class="container">
       <nav class="nav" aria-label="Main navigation">
-        <a class="brand" href="/">
-          <span class="mark">G</span>
-          <span>Gallegos Trailer Sales<small>Direct from the manufacturer</small></span>
+        <a class="brand" href="/" aria-label="Gallegos Trailers — Home">
+          <img class="brand-logo" src="/assets/img/logo.svg" width="150" height="56" alt="Gallegos Trailers">
         </a>
         <button class="nav-toggle" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">
           <span></span>
@@ -55,11 +54,10 @@ const footer = `  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="/" style="margin-bottom:.8rem;">
-            <span class="mark">G</span>
-            <span>Gallegos Trailer Sales</span>
+          <a class="brand" href="/" style="margin-bottom:1rem;" aria-label="Gallegos Trailers — Home">
+            <img class="brand-logo" src="/assets/img/logo.svg" width="170" height="64" alt="Gallegos Trailers" style="height:56px;">
           </a>
-          <p>New semi-trailers built direct from the manufacturer for bulk, liquid, scrap metal, demolition and aggregate hauling.</p>
+          <p>New semi-trailers built direct from the manufacturer for scrap &amp; demolition, oilfield &amp; liquid, dry bulk and aggregate hauling.</p>
         </div>
         <div>
           <h4>Trailers</h4>
@@ -113,7 +111,7 @@ function page({ path, active, title, description, canonical, jsonld, ogImage, bo
   <meta name="description" content="${description}">
   <link rel="canonical" href="${SITE}${canonical}">
   <meta name="robots" content="${noindex ? "noindex, follow" : "index, follow"}">
-  <meta name="theme-color" content="#0f2038">
+  <meta name="theme-color" content="#26292e">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Gallegos Trailer Sales">
@@ -181,7 +179,7 @@ pages.push({
   title:
     "Gallegos Trailer Sales | Semi-Trailers Direct From the Manufacturer in Laredo, TX",
   description:
-    "New semi-trailers built direct from the factory in Laredo, TX. Dry bulk pneumatic, vacuum tank, demolition end dump and belly dump trailers for heavy-haul industries. Call 956-378-5818 for a quote.",
+    "New semi-trailers built direct from the factory in Laredo, TX — scrap metal & demolition dump trailers, lightweight aluminum vacuum tanks for oilfield & water hauling, dry bulk pneumatic and aggregate trailers. Call 956-378-5818 for a factory-direct quote.",
   canonical: "/",
   jsonld: {
     "@context": "https://schema.org",
@@ -201,9 +199,9 @@ pages.push({
     description:
       "New semi-trailers built direct from the manufacturer for dry bulk, liquid, scrap metal, demolition and aggregate hauling.",
     makesOffer: [
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Dry Bulk Pneumatic Trailers" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Vacuum Tank Trailers" } },
       { "@type": "Offer", itemOffered: { "@type": "Product", name: "Demolition & Scrap Metal Dump Trailers" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Aluminum Vacuum Tank Trailers" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Dry Bulk Pneumatic Trailers" } },
       { "@type": "Offer", itemOffered: { "@type": "Product", name: "Belly Dump & Transfer Dump Trailers" } },
     ],
   },
@@ -211,7 +209,7 @@ pages.push({
       <div class="container">
         <span class="eyebrow">Laredo, TX &middot; Built to order</span>
         <h1>Semi-Trailers Built Direct From the Manufacturer</h1>
-        <p class="hero-lead">Gallegos Trailer Sales supplies new dry bulk, vacuum tank, demolition and belly dump semi-trailers for the toughest heavy-haul industries &mdash; engineered for durability, capacity and performance.</p>
+        <p class="hero-lead">Gallegos Trailer Sales builds new scrap &amp; demolition dump trailers, lightweight aluminum vacuum tanks and dry bulk pneumatic semi-trailers for the toughest heavy-haul industries &mdash; engineered for durability, capacity and payload.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="/contact/">Request a Quote</a>
           <a class="btn btn-outline btn-lg" href="/bulk/">Browse Trailers</a>
@@ -229,34 +227,34 @@ pages.push({
         <div class="section-head">
           <span class="eyebrow">What we build</span>
           <h2>Four trailer categories for heavy-haul work</h2>
-          <p class="lead">Every trailer we sell is spec'd for a specific industry &mdash; from fine dry powders to oilfield fluids, demolition debris and construction aggregates.</p>
+          <p class="lead">Every trailer we sell is spec'd for a specific industry &mdash; from demolition debris and scrap metal to oilfield fluids, fine dry powders and construction aggregates.</p>
         </div>
 
         <div class="cat-grid">
+          <a class="cat-card" href="/scrap-metal-demolition/">
+            <img class="thumb" src="/assets/img/demolition-end-dump-trailer.svg" width="800" height="500" loading="lazy" alt="Demolition end dump trailer built with HARDOX 450 steel for scrap metal">
+            <div class="body">
+              <h3>Scrap Metal &amp; Demolition</h3>
+              <p>80&ndash;96 yd&sup3; HARDOX 450 end dumps with a reinforced quarter frame &mdash; built to haul demolition debris and scrap metal.</p>
+              <span class="more">View dump trailers &rarr;</span>
+            </div>
+          </a>
+
+          <a class="cat-card" href="/liquid/">
+            <img class="thumb" src="/assets/img/vacuum-tank-trailer.svg" width="800" height="500" loading="lazy" alt="Aluminum vacuum tank trailer for oilfield and produced water hauling">
+            <div class="body">
+              <h3>Vacuum Tank / Oilfield</h3>
+              <p>Lightweight aluminum &amp; stainless 130&ndash;150 Bbl vacuum tanks for produced water and oilfield fluids. USDOT 406 / ASME.</p>
+              <span class="more">View vacuum tanks &rarr;</span>
+            </div>
+          </a>
+
           <a class="cat-card" href="/bulk/">
             <img class="thumb" src="/assets/img/steel-pneumatic-dry-bulk-trailer.svg" width="800" height="500" loading="lazy" alt="Steel pneumatic dry bulk trailer for cement and fine powders">
             <div class="body">
               <h3>Dry Bulk / Pneumatic</h3>
               <p>Steel and aluminum pneumatic trailers, 1,040&ndash;1,400 ft&sup3;, for cement, lime and fine powders.</p>
               <span class="more">View dry bulk trailers &rarr;</span>
-            </div>
-          </a>
-
-          <a class="cat-card" href="/liquid/">
-            <img class="thumb" src="/assets/img/vacuum-tank-trailer.svg" width="800" height="500" loading="lazy" alt="Vacuum tank trailer for oilfield and liquid hauling">
-            <div class="body">
-              <h3>Vacuum Tank / Oilfield</h3>
-              <p>130&ndash;150 Bbl vacuum tanks for produced water, oilfield mud and chemical waste. USDOT 406 / ASME.</p>
-              <span class="more">View vacuum tanks &rarr;</span>
-            </div>
-          </a>
-
-          <a class="cat-card" href="/scrap-metal-demolition/">
-            <img class="thumb" src="/assets/img/demolition-end-dump-trailer.svg" width="800" height="500" loading="lazy" alt="Demolition end dump trailer built with HARDOX 450 steel for scrap metal">
-            <div class="body">
-              <h3>Scrap Metal &amp; Demolition</h3>
-              <p>80&ndash;96 yd&sup3; end dumps in HARDOX 450 steel, reinforced quarter frame, for demolition debris and scrap.</p>
-              <span class="more">View dump trailers &rarr;</span>
             </div>
           </a>
 
@@ -395,7 +393,7 @@ pages.push({
   active: "liquid",
   title: "Vacuum Tank Trailers for Oilfield & Liquid Hauling | Gallegos Trailer Sales",
   description:
-    "130–150 Bbl vacuum tank trailers for oilfield fluid transport, produced water hauling and chemical waste. Stainless or aluminum ASTM A36, USDOT 406 / ASME / R-Stamp certified. Permian Basin ready.",
+    "Lightweight aluminum and stainless vacuum tank trailers, 130–150 Bbl, for oilfield fluid transport, produced water hauling and chemical waste. USDOT 406 / ASME / R-Stamp certified. Permian Basin ready.",
   canonical: "/liquid/",
   ogImage: "/assets/img/vacuum-tank-trailer.svg",
   jsonld: {
@@ -409,7 +407,7 @@ pages.push({
   body: `${pageHero({
     eyebrow: "Vacuum Tank / Oilfield",
     h1: "Vacuum Tank Trailers for Oilfield &amp; Liquid Hauling",
-    lead: "Vacuum tank trailers built for oilfield fluid transport, produced water hauling and chemical waste across the Permian Basin and beyond &mdash; certified to USDOT 406, ASME and R-Stamp standards.",
+    lead: "Vacuum tank trailers &mdash; available in lightweight aluminum or stainless steel &mdash; built for oilfield fluid transport, produced water hauling and chemical waste across the Permian Basin and beyond. Certified to USDOT 406, ASME and R-Stamp standards.",
     crumb: "Vacuum Tank",
   })}
 
@@ -419,12 +417,12 @@ ${product({
     img: "/assets/img/vacuum-tank-trailer.svg",
     alt: "Vacuum tank trailer, 130 to 150 Bbl, for oilfield and produced water hauling",
     name: "Vacuum Tank Trailer",
-    tagline: "Engineered for oilfield mud, produced water and chemical waste.",
-    pills: ["Permian Basin", "Produced water hauling", "Oilfield fluid transport"],
+    tagline: "Lightweight aluminum or stainless build for oilfield mud, produced water and chemical waste.",
+    pills: ["Aluminum water vac", "Permian Basin", "Produced water hauling", "Oilfield fluid transport"],
     specs: [
       "<b>Capacity:</b> 130 &ndash; 150 Bbl",
       "<b>2 axles:</b> 17,857 lbs",
-      "Built in stainless steel or aluminum ASTM A36",
+      "Built in lightweight aluminum or stainless steel (ASTM A36)",
       "Two-piece cylindrical design with a single circumferential seam",
       "Purpose-engineered for chemical waste, oilfield mud and water",
       "<b>Certifications:</b> USDOT 406 / R-Stamp / ASME",

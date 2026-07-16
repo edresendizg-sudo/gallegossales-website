@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150" role="img" aria-label="Gallegos Trailers">
+  <defs>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ec2027"/>
+      <stop offset="0.55" stop-color="#d4121a"/>
+      <stop offset="1" stop-color="#a20d12"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3d42"/>
+      <stop offset="1" stop-color="#232529"/>
+    </linearGradient>
+    <clipPath id="badge">
+      <rect x="6" y="8" width="388" height="134" rx="26"/>
+    </clipPath>
+  </defs>
+
+  <!-- Badge -->
+  <g clip-path="url(#badge)">
+    <rect x="6" y="8" width="388" height="134" fill="url(#red)"/>
+    <!-- subtle top sheen -->
+    <rect x="6" y="8" width="388" height="46" fill="#ffffff" opacity="0.06"/>
+    <!-- dark ribbon for "Trailers" with a gentle concave top edge -->
+    <path d="M6 104 Q200 90 394 104 L394 142 L6 142 Z" fill="url(#dark)"/>
+    <path d="M6 104 Q200 90 394 104" fill="none" stroke="#000000" stroke-opacity="0.18" stroke-width="2"/>
+  </g>
+  <rect x="6" y="8" width="388" height="134" rx="26" fill="none" stroke="#8f0c11" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Wordmark -->
+  <g transform="skewX(-9)">
+    <text x="196" y="82" text-anchor="middle"
+          font-family="'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="70" font-weight="900" font-style="italic"
+          fill="#ffffff" stroke="#7d0a0f" stroke-width="1.4"
+          paint-order="stroke" letter-spacing="-2">Gallegos</text>
+  </g>
+
+  <text x="196" y="132" text-anchor="middle"
+        font-family="'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="30" font-weight="800" font-style="italic"
+        fill="#ffffff" letter-spacing="4">Trailers</text>
+  <text x="330" y="120" font-family="Arial, sans-serif" font-size="11" fill="#ffffff" opacity="0.85">MR</text>
+</svg>
