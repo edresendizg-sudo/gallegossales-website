@@ -1,0 +1,13 @@
+{
+  "name": "gallegossales-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static marketing site for Gallegos Trailer Sales (gallegossales.com)",
+  "type": "module",
+  "scripts": {
+    "images": "node scripts/gen-placeholders.mjs",
+    "build": "node scripts/build.mjs",
+    "serve": "node --version && npx --yes serve . -l 3000"
+  },
+  "license": "UNLICENSED"
+}

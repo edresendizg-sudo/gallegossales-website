@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gallegossales.com/sitemap.xml
