@@ -59,12 +59,13 @@ npm run serve      # serves the site at http://localhost:3000
 ## Logo
 
 `assets/img/logo.svg` is a **self-contained vector** recreation of the Gallegos
-Trailers logo: a red badge with the "Gallegos" brush-script wordmark (Kaushan
-Script, subset + embedded as a base64 data URI so it renders anywhere with no
-external font), the dark "Trailers" ribbon, and the MR mark. It has a transparent
-background (no gray borders) and stays crisp at any size. The favicon is generated
-from the same source. To tweak proportions/colors, edit `scripts/gen-logo.mjs` and
-run `npm run logo`.
+Trailers logo: an elongated hexagon badge with a red gloss gradient, the bold
+italic "Gallegos" wordmark (Saira Condensed 800, subset + embedded as a base64
+data URI so it renders anywhere with no external font), the dark "Trailers" ribbon
+with a light divider, and the MR mark. It has a transparent background (no gray
+borders) and stays crisp at any size. The favicon is generated from the same
+source. To tweak proportions/colors, edit `scripts/gen-logo.mjs` and run
+`npm run logo`.
 
 > If you have the **original logo artwork** (vector `.ai`/`.eps`/`.svg`, or a
 > high-resolution PNG), drop it in `assets/img/` and point the header/footer `src`
