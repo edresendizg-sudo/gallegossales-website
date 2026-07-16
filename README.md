@@ -58,19 +58,16 @@ npm run serve      # serves the site at http://localhost:3000
 
 ## Logo
 
-`assets/img/logo.svg` is a **self-contained vector** recreation of the Gallegos
-Trailers logo: an elongated hexagon badge with a red gloss gradient, the bold
-italic "Gallegos" wordmark (Saira Condensed 800, subset + embedded as a base64
-data URI so it renders anywhere with no external font), the dark "Trailers" ribbon
-with a light divider, and the MR mark. It has a transparent background (no gray
-borders) and stays crisp at any size. The favicon is generated from the same
-source. To tweak proportions/colors, edit `scripts/gen-logo.mjs` and run
-`npm run logo`.
+`assets/img/gallegos-logo.png` is the **official Gallegos Trailers logo**
+(740×371, transparent background) used in the header and footer. It's referenced
+from `scripts/build.mjs`; the `.brand-logo` rule in `styles.css` controls its
+displayed size. `assets/img/favicon.svg` is a small brand-colored badge used as
+the browser-tab icon.
 
-> If you have the **original logo artwork** (vector `.ai`/`.eps`/`.svg`, or a
-> high-resolution PNG), drop it in `assets/img/` and point the header/footer `src`
-> at it in `scripts/build.mjs` for a pixel-perfect match — the current file is a
-> faithful recreation, not the original vector.
+> To swap the logo, replace `gallegos-logo.png` (keep the transparent background)
+> or point the header/footer `src` in `scripts/build.mjs` at a new file, then
+> `npm run build`. If you ever have a **vector** version (`.svg`), use it for the
+> crispest result at large sizes.
 
 ## Replacing the product images
 
