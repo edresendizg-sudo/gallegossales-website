@@ -1,42 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150" role="img" aria-label="Gallegos Trailers">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 116" role="img" aria-label="Gallegos Trailers">
   <defs>
-    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ec2027"/>
-      <stop offset="0.55" stop-color="#d4121a"/>
-      <stop offset="1" stop-color="#a20d12"/>
+    <style>
+      @font-face{
+        font-family:"Kaushan Script";
+        font-style:normal;font-weight:400;
+        src:url(data:font/woff2;base64,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) format("woff2");
+      }
+      .wm{font-family:"Kaushan Script",cursive;fill:#fff;}
+    </style>
+    <linearGradient id="gtsRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ee2129"/><stop offset="0.5" stop-color="#d4121a"/><stop offset="1" stop-color="#9d0c11"/>
     </linearGradient>
-    <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#3a3d42"/>
-      <stop offset="1" stop-color="#232529"/>
+    <linearGradient id="gtsDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#41444a"/><stop offset="1" stop-color="#212327"/>
     </linearGradient>
-    <clipPath id="badge">
-      <rect x="6" y="8" width="388" height="134" rx="26"/>
-    </clipPath>
+    <clipPath id="gtsBadge"><rect x="3" y="3" width="294" height="110" rx="20"/></clipPath>
   </defs>
-
-  <!-- Badge -->
-  <g clip-path="url(#badge)">
-    <rect x="6" y="8" width="388" height="134" fill="url(#red)"/>
-    <!-- subtle top sheen -->
-    <rect x="6" y="8" width="388" height="46" fill="#ffffff" opacity="0.06"/>
-    <!-- dark ribbon for "Trailers" with a gentle concave top edge -->
-    <path d="M6 104 Q200 90 394 104 L394 142 L6 142 Z" fill="url(#dark)"/>
-    <path d="M6 104 Q200 90 394 104" fill="none" stroke="#000000" stroke-opacity="0.18" stroke-width="2"/>
+  <g clip-path="url(#gtsBadge)">
+    <rect x="3" y="3" width="294" height="110" fill="url(#gtsRed)"/>
+    <ellipse cx="150" cy="20" rx="180" ry="30" fill="#ffffff" opacity="0.08"/>
+    <path d="M3 84 Q150 72 297 84 L297 113 L3 113 Z" fill="url(#gtsDark)"/>
   </g>
-  <rect x="6" y="8" width="388" height="134" rx="26" fill="none" stroke="#8f0c11" stroke-width="1.5" opacity="0.5"/>
-
-  <!-- Wordmark -->
-  <g transform="skewX(-9)">
-    <text x="196" y="82" text-anchor="middle"
-          font-family="'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif"
-          font-size="70" font-weight="900" font-style="italic"
-          fill="#ffffff" stroke="#7d0a0f" stroke-width="1.4"
-          paint-order="stroke" letter-spacing="-2">Gallegos</text>
-  </g>
-
-  <text x="196" y="132" text-anchor="middle"
-        font-family="'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        font-size="30" font-weight="800" font-style="italic"
-        fill="#ffffff" letter-spacing="4">Trailers</text>
-  <text x="330" y="120" font-family="Arial, sans-serif" font-size="11" fill="#ffffff" opacity="0.85">MR</text>
+  <rect x="3" y="3" width="294" height="110" rx="20" fill="none" stroke="#7d0a0f" stroke-width="1.5" opacity="0.35"/>
+  <text class="wm" x="150" y="70" text-anchor="middle" font-size="62" stroke="#7a090e" stroke-width="1.3" paint-order="stroke" stroke-linejoin="round">Gallegos</text>
+  <text class="wm" x="150" y="104" text-anchor="middle" font-size="27" letter-spacing="1">Trailers</text>
+  <text x="248" y="94" font-family="Arial, sans-serif" font-size="9" fill="#ffffff" opacity="0.85">MR</text>
 </svg>
