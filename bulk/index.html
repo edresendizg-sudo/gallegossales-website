@@ -23,19 +23,65 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://gallegossales.com/"
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://gallegossales.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Dry Bulk Pneumatic Trailers",
+            "item": "https://gallegossales.com/bulk/"
+          }
+        ]
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Dry Bulk Pneumatic Trailers",
-        "item": "https://gallegossales.com/bulk/"
+        "@type": "Product",
+        "name": "Steel Pneumatic Dry Bulk Trailer",
+        "brand": {
+          "@type": "Brand",
+          "name": "Gallegos"
+        },
+        "category": "Dry Bulk Pneumatic Trailers",
+        "description": "Steel pneumatic dry bulk trailer, 1,040–1,400 ft³, for cement, lime and fine powders. 2 axles 13,448 lbs, 3 axles 17,857 lbs.",
+        "image": "https://gallegossales.com/assets/img/steel-pneumatic-dry-bulk-trailer.svg",
+        "url": "https://gallegossales.com/bulk/",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@id": "https://gallegossales.com/#business"
+          },
+          "areaServed": "US"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Aluminum Pneumatic Dry Bulk Trailer",
+        "brand": {
+          "@type": "Brand",
+          "name": "Gallegos"
+        },
+        "category": "Dry Bulk Pneumatic Trailers",
+        "description": "Lightweight aluminum pneumatic dry bulk trailer, 1,040–1,400 ft³, with the lowest tare weight on the market. 2 axles 9,920 lbs, 3 axles 14,550 lbs.",
+        "image": "https://gallegossales.com/assets/img/aluminum-pneumatic-dry-bulk-trailer.svg",
+        "url": "https://gallegossales.com/bulk/",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@id": "https://gallegossales.com/#business"
+          },
+          "areaServed": "US"
+        }
       }
     ]
   }
@@ -161,6 +207,7 @@
           <h4>Company</h4>
           <ul class="footer-links">
             <li><a href="/about/">About Us</a></li>
+            <li><a href="/faq/">FAQ</a></li>
             <li><a href="/contact/">Contact</a></li>
             <li><a href="tel:+19563785818">956-378-5818</a></li>
             <li><a href="https://wa.me/19563785818" rel="noopener">WhatsApp</a></li>

@@ -23,19 +23,44 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://gallegossales.com/"
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://gallegossales.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Demolition & Scrap Metal Dump Trailers",
+            "item": "https://gallegossales.com/scrap-metal-demolition/"
+          }
+        ]
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Demolition & Scrap Metal Dump Trailers",
-        "item": "https://gallegossales.com/scrap-metal-demolition/"
+        "@type": "Product",
+        "name": "Demolition End Dump Trailer (HARDOX 450)",
+        "brand": {
+          "@type": "Brand",
+          "name": "Gallegos"
+        },
+        "category": "Demolition & Scrap Metal Dump Trailers",
+        "description": "HARDOX 450 demolition and scrap metal end dump trailer, 80–96 yd³, with a reinforced quarter frame and a choice of spring ride or air ride. 2 axles 26,587 lbs, 3 axles 27,271 lbs.",
+        "image": "https://gallegossales.com/assets/img/demolition-end-dump-trailer.svg",
+        "url": "https://gallegossales.com/scrap-metal-demolition/",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@id": "https://gallegossales.com/#business"
+          },
+          "areaServed": "US"
+        }
       }
     ]
   }
@@ -141,6 +166,7 @@
           <h4>Company</h4>
           <ul class="footer-links">
             <li><a href="/about/">About Us</a></li>
+            <li><a href="/faq/">FAQ</a></li>
             <li><a href="/contact/">Contact</a></li>
             <li><a href="tel:+19563785818">956-378-5818</a></li>
             <li><a href="https://wa.me/19563785818" rel="noopener">WhatsApp</a></li>

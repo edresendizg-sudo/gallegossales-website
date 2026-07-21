@@ -364,6 +364,28 @@ p { margin: 0 0 1rem; }
 .stat b { display: block; font-size: 1.8rem; color: var(--navy); font-weight: 900; }
 .stat span { color: var(--muted); font-size: .9rem; }
 
+/* ---------- FAQ ---------- */
+.faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: .8rem; }
+.faq-item {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: #fff; box-shadow: var(--shadow-sm); overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer; list-style: none; padding: 1.05rem 1.25rem;
+  font-weight: 700; color: var(--navy); font-size: 1.05rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; font-size: 1.5rem; font-weight: 400; color: var(--accent);
+  line-height: 1; transition: transform .2s ease; flex: none;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item summary:hover { color: var(--accent-dark); }
+.faq-answer { padding: 0 1.25rem 1.2rem; color: var(--muted); }
+.faq-answer p { margin: 0; }
+.faq-answer a { font-weight: 600; }
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--navy); color: #c3cfdd; padding: 3rem 0 1.4rem; margin-top: 1rem; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; }

@@ -72,6 +72,7 @@ const footer = `  <footer class="site-footer">
           <h4>Company</h4>
           <ul class="footer-links">
             <li><a href="/about/">About Us</a></li>
+            <li><a href="/faq/">FAQ</a></li>
             <li><a href="/contact/">Contact</a></li>
             <li><a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></li>
             <li><a href="${WHATSAPP}" rel="noopener">WhatsApp</a></li>
@@ -150,6 +151,40 @@ function pageHero({ eyebrow, h1, lead, crumb }) {
     </section>`;
 }
 
+// Structured data for a product category page: breadcrumb + one Product per
+// item, each branded "Gallegos" and offered by the business. Improves rich
+// results and helps answer engines associate the products with the site.
+function catalogLD(pageName, pageUrl, products) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
+          { "@type": "ListItem", position: 2, name: pageName, item: SITE + pageUrl },
+        ],
+      },
+      ...products.map((p) => ({
+        "@type": "Product",
+        name: p.name,
+        brand: { "@type": "Brand", name: "Gallegos" },
+        category: pageName,
+        description: p.description,
+        image: SITE + p.image,
+        url: SITE + pageUrl,
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          priceCurrency: "USD",
+          seller: { "@id": SITE + "/#business" },
+          areaServed: "US",
+        },
+      })),
+    ],
+  };
+}
+
 // Bottom CTA band, reused on category/about pages
 const ctaBand = `    <section class="section">
       <div class="container">
@@ -184,25 +219,51 @@ pages.push({
   jsonld: {
     "@context": "https://schema.org",
     "@type": "AutoDealer",
+    "@id": SITE + "/#business",
     name: "Gallegos Trailer Sales",
+    alternateName: "Gallegos Trailers Laredo",
     url: SITE + "/",
-    image: SITE + "/assets/img/steel-pneumatic-dry-bulk-trailer.svg",
+    logo: SITE + "/assets/img/gallegos-logo.png",
+    image: SITE + "/assets/img/gallegos-logo.png",
     telephone: "+1-956-378-5818",
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Laredo",
       addressRegion: "TX",
+      postalCode: "78045",
       addressCountry: "US",
     },
-    areaServed: "US",
+    geo: { "@type": "GeoCoordinates", latitude: 27.5306, longitude: -99.4803 },
+    areaServed: [
+      { "@type": "State", name: "Texas" },
+      { "@type": "Place", name: "Permian Basin" },
+      { "@type": "Country", name: "United States" },
+    ],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+    ],
+    knowsAbout: [
+      "scrap metal dump trailers",
+      "demolition end dump trailers",
+      "aluminum vacuum tank trailers",
+      "oilfield produced water hauling trailers",
+      "dry bulk pneumatic trailers",
+      "belly dump aggregate trailers",
+      "HARDOX 450 dump trailers",
+    ],
     description:
-      "New semi-trailers built direct from the manufacturer for dry bulk, liquid, scrap metal, demolition and aggregate hauling.",
+      "New semi-trailers built direct from the manufacturer for scrap metal, demolition, oilfield & liquid, dry bulk and aggregate hauling. Based in Laredo, TX; serving Texas, the Permian Basin and the United States.",
     makesOffer: [
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Demolition & Scrap Metal Dump Trailers" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Aluminum Vacuum Tank Trailers" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Dry Bulk Pneumatic Trailers" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Belly Dump & Transfer Dump Trailers" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Demolition & Scrap Metal Dump Trailers", url: SITE + "/scrap-metal-demolition/" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Aluminum Vacuum Tank Trailers", url: SITE + "/liquid/" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Dry Bulk Pneumatic Trailers", url: SITE + "/bulk/" } },
+      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Belly Dump & Transfer Dump Trailers", url: SITE + "/construction-aggregates/" } },
     ],
   },
   body: `    <section class="hero hero-home">
@@ -301,6 +362,17 @@ pages.push({
       </div>
     </section>
 
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Gallegos trailers for sale</span>
+          <h2>New Gallegos trailers for sale in Laredo, Texas</h2>
+          <p class="lead">Gallegos Trailer Sales connects buyers with new, manufacturer-direct Gallegos semi-trailers &mdash; from scrap metal and demolition dump trailers to aluminum vacuum tanks, dry bulk pneumatics and belly dumps. We ship across Texas, the Permian Basin and the United States, and we'll spec the right unit for the exact load you haul.</p>
+        </div>
+        <p><a class="btn btn-ghost" href="/faq/">Read our FAQ</a> <a class="btn btn-primary" href="/contact/">Get a factory-direct quote</a></p>
+      </div>
+    </section>
+
 ${ctaBand}`,
 });
 
@@ -334,14 +406,18 @@ pages.push({
     "Steel and aluminum pneumatic dry bulk trailers, 1,040–1,400 ft³, for cement, lime and fine powders. Low tare weight, high capacity. Built direct from the manufacturer in Laredo, TX.",
   canonical: "/bulk/",
   ogImage: "/assets/img/steel-pneumatic-dry-bulk-trailer.svg",
-  jsonld: {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
-      { "@type": "ListItem", position: 2, name: "Dry Bulk Pneumatic Trailers", item: SITE + "/bulk/" },
-    ],
-  },
+  jsonld: catalogLD("Dry Bulk Pneumatic Trailers", "/bulk/", [
+    {
+      name: "Steel Pneumatic Dry Bulk Trailer",
+      image: "/assets/img/steel-pneumatic-dry-bulk-trailer.svg",
+      description: "Steel pneumatic dry bulk trailer, 1,040–1,400 ft³, for cement, lime and fine powders. 2 axles 13,448 lbs, 3 axles 17,857 lbs.",
+    },
+    {
+      name: "Aluminum Pneumatic Dry Bulk Trailer",
+      image: "/assets/img/aluminum-pneumatic-dry-bulk-trailer.svg",
+      description: "Lightweight aluminum pneumatic dry bulk trailer, 1,040–1,400 ft³, with the lowest tare weight on the market. 2 axles 9,920 lbs, 3 axles 14,550 lbs.",
+    },
+  ]),
   body: `${pageHero({
     eyebrow: "Dry Bulk / Pneumatic",
     h1: "Dry Bulk Pneumatic Trailers for Sale in Texas",
@@ -396,14 +472,13 @@ pages.push({
     "Lightweight aluminum and stainless vacuum tank trailers, 130–150 Bbl, for oilfield fluid transport, produced water hauling and chemical waste. USDOT 406 / ASME / R-Stamp certified. Permian Basin ready.",
   canonical: "/liquid/",
   ogImage: "/assets/img/vacuum-tank-trailer.svg",
-  jsonld: {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
-      { "@type": "ListItem", position: 2, name: "Vacuum Tank Trailers", item: SITE + "/liquid/" },
-    ],
-  },
+  jsonld: catalogLD("Vacuum Tank Trailers", "/liquid/", [
+    {
+      name: "Aluminum / Stainless Vacuum Tank Trailer",
+      image: "/assets/img/vacuum-tank-trailer.svg",
+      description: "Vacuum tank trailer, 130–150 Bbl, in lightweight aluminum or stainless steel (ASTM A36). Two-piece cylindrical design; USDOT 406 / R-Stamp / ASME certified. For oilfield mud, produced water and chemical waste.",
+    },
+  ]),
   body: `${pageHero({
     eyebrow: "Vacuum Tank / Oilfield",
     h1: "Vacuum Tank Trailers for Oilfield &amp; Liquid Hauling",
@@ -453,14 +528,13 @@ pages.push({
     "Demolition end dump trailers, 80–96 yd³, built with HARDOX 450 steel and a reinforced quarter frame for demolition debris and scrap metal hauling. Spring ride or air ride. Made in Laredo, TX.",
   canonical: "/scrap-metal-demolition/",
   ogImage: "/assets/img/demolition-end-dump-trailer.svg",
-  jsonld: {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
-      { "@type": "ListItem", position: 2, name: "Demolition & Scrap Metal Dump Trailers", item: SITE + "/scrap-metal-demolition/" },
-    ],
-  },
+  jsonld: catalogLD("Demolition & Scrap Metal Dump Trailers", "/scrap-metal-demolition/", [
+    {
+      name: "Demolition End Dump Trailer (HARDOX 450)",
+      image: "/assets/img/demolition-end-dump-trailer.svg",
+      description: "HARDOX 450 demolition and scrap metal end dump trailer, 80–96 yd³, with a reinforced quarter frame and a choice of spring ride or air ride. 2 axles 26,587 lbs, 3 axles 27,271 lbs.",
+    },
+  ]),
   body: `${pageHero({
     eyebrow: "Scrap Metal &amp; Demolition",
     h1: "Demolition &amp; Scrap Metal Dump Trailers",
@@ -502,14 +576,18 @@ pages.push({
     "Belly dump and California Dirt Dauber set trailers in HARDOX 450 for aggregates and asphalt. Pneumatic door opening, HUTCH or Hendrickson suspension, Accuride or Alcoa wheels. Built in Laredo, TX.",
   canonical: "/construction-aggregates/",
   ogImage: "/assets/img/belly-dump-trailer.svg",
-  jsonld: {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
-      { "@type": "ListItem", position: 2, name: "Belly Dump & Transfer Dump Trailers", item: SITE + "/construction-aggregates/" },
-    ],
-  },
+  jsonld: catalogLD("Belly Dump & Transfer Dump Trailers", "/construction-aggregates/", [
+    {
+      name: "Belly / Bottom Dump Trailer (HARDOX 450)",
+      image: "/assets/img/belly-dump-trailer.svg",
+      description: "HARDOX 450 belly / bottom dump trailer with pneumatic door opening, HUTCH Spring or Hendrickson Intraax suspension and Accuride or Alcoa wheels. For aggregates and asphalt.",
+    },
+    {
+      name: "California Dirt Dauber Set",
+      image: "/assets/img/california-dirt-dauber-set.svg",
+      description: "California Dirt Dauber dump box set, 26 yd³, unit weight 10,500 lbs, in hybrid aluminum and stainless-steel wall combinations with super single or dual tires.",
+    },
+  ]),
   body: `${pageHero({
     eyebrow: "Construction &amp; Aggregates",
     h1: "Belly Dump &amp; Transfer Dump Trailers for Aggregates",
@@ -685,6 +763,83 @@ pages.push({
     </section>`,
 });
 
+// ---------- FAQ ----------
+// Buyer-intent questions phrased the way people ask search engines and AI
+// assistants. Answered in real HTML text + FAQPage schema for rich results
+// and answer-engine visibility.
+const faqs = [
+  {
+    q: "Where can I buy Gallegos trailers?",
+    a: `You can buy Gallegos-built semi-trailers directly through Gallegos Trailer Sales in Laredo, Texas. Call or WhatsApp ${PHONE_DISPLAY} for a factory-direct quote, or use our <a href="/contact/">contact form</a>. We serve customers across Texas, the Permian Basin and the United States.`,
+  },
+  {
+    q: "What types of trailers does Gallegos Trailer Sales offer?",
+    a: `We offer four main categories: <a href="/scrap-metal-demolition/">scrap metal &amp; demolition dump trailers</a> (HARDOX 450 end dumps), <a href="/liquid/">vacuum tank trailers</a> for oilfield and liquid hauling (lightweight aluminum or stainless), <a href="/bulk/">dry bulk pneumatic trailers</a>, and <a href="/construction-aggregates/">belly dump &amp; aggregate trailers</a>.`,
+  },
+  {
+    q: "Do you sell aluminum vacuum tank trailers for the oilfield?",
+    a: `Yes. Our vacuum tank trailers are available in lightweight aluminum or stainless steel (ASTM A36), 130–150 Bbl, and are certified to USDOT 406, ASME and R-Stamp standards — built for produced water hauling, oilfield mud and chemical waste in the Permian Basin and beyond.`,
+  },
+  {
+    q: "What is a HARDOX 450 dump trailer?",
+    a: `HARDOX 450 is a high-strength, abrasion-resistant steel. Our demolition and scrap metal end dump trailers are built with HARDOX 450 and a reinforced quarter frame, with 80–96 yd³ capacity and a choice of spring ride or air ride — engineered to haul demolition debris and scrap metal.`,
+  },
+  {
+    q: "How much does a Gallegos trailer cost?",
+    a: `Pricing depends on the trailer type, capacity, material and options. Because we sell direct from the manufacturer, we can give you competitive factory-direct pricing — call ${PHONE_DISPLAY} or <a href="/contact/">request a quote</a> and we'll price your exact configuration.`,
+  },
+  {
+    q: "Where is Gallegos Trailer Sales located?",
+    a: `We are based in Laredo, Texas, and ship trailers to customers throughout Texas, the Permian Basin and the wider United States.`,
+  },
+  {
+    q: "How do I get a quote for a new trailer?",
+    a: `Call or WhatsApp ${PHONE_DISPLAY}, or fill out the form on our <a href="/contact/">contact page</a> describing the trailer you need (type, capacity, quantity and timeline). We'll get back to you with a factory-direct quote.`,
+  },
+];
+
+pages.push({
+  file: "faq/index.html",
+  path: "/faq/",
+  active: "faq",
+  title: "Frequently Asked Questions | Gallegos Trailer Sales",
+  description:
+    "Answers about buying Gallegos semi-trailers in Texas: where to buy, trailer types, aluminum vacuum tanks, HARDOX 450 dump trailers, pricing and how to get a factory-direct quote. Call 956-378-5818.",
+  canonical: "/faq/",
+  jsonld: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a.replace(/<[^>]+>/g, "") },
+    })),
+  },
+  body: `${pageHero({
+    eyebrow: "FAQ",
+    h1: "Frequently Asked Questions",
+    lead: "Common questions about buying Gallegos semi-trailers — trailer types, materials, pricing and how to get a quote.",
+    crumb: "FAQ",
+  })}
+
+    <section class="section">
+      <div class="container">
+        <div class="faq-list">
+${faqs
+  .map(
+    (f) => `          <details class="faq-item">
+            <summary>${f.q}</summary>
+            <div class="faq-answer"><p>${f.a}</p></div>
+          </details>`
+  )
+  .join("\n")}
+        </div>
+      </div>
+    </section>
+
+${ctaBand}`,
+});
+
 // ---------- 404 ----------
 pages.push({
   file: "404.html",
@@ -757,12 +912,61 @@ writeFileSync(resolve(ROOT, "sitemap.xml"), sitemap);
 console.log("built sitemap.xml");
 
 // ---- robots.txt ----
-const robots = `User-agent: *
+// Explicitly welcome search engines AND AI answer engines (ChatGPT, Claude,
+// Perplexity, Gemini, etc.) so the site can be cited by them.
+const aiBots = [
+  "GPTBot",          // OpenAI (ChatGPT training/crawl)
+  "OAI-SearchBot",   // OpenAI search
+  "ChatGPT-User",    // ChatGPT live browsing
+  "ClaudeBot",       // Anthropic (Claude) crawl
+  "Claude-Web",      // Anthropic live browsing
+  "anthropic-ai",    // Anthropic
+  "PerplexityBot",   // Perplexity crawl
+  "Perplexity-User", // Perplexity live browsing
+  "Google-Extended", // Google Gemini / AI training
+  "Applebot-Extended",
+  "Bingbot",         // Bing — also powers ChatGPT search
+  "CCBot",           // Common Crawl (feeds many LLMs)
+  "Amazonbot",
+  "DuckAssistBot",
+  "cohere-ai",
+  "YouBot",
+];
+const robots = `# Gallegos Trailer Sales — all crawlers welcome
+User-agent: *
 Allow: /
+
+${aiBots.map((b) => `User-agent: ${b}\nAllow: /`).join("\n\n")}
 
 Sitemap: ${SITE}/sitemap.xml
 `;
 writeFileSync(resolve(ROOT, "robots.txt"), robots);
 console.log("built robots.txt");
+
+// ---- llms.txt ----
+// Emerging convention (llmstxt.org) — a plain-text brief that AI assistants can
+// read to understand the site quickly. Mirrors the key facts and links.
+const llms = `# Gallegos Trailer Sales
+
+> New heavy-haul semi-trailers built direct from the manufacturer, sold from Laredo, Texas.
+> We specialize in scrap metal & demolition dump trailers, lightweight aluminum vacuum
+> tanks for oilfield and produced-water hauling, dry bulk pneumatic trailers, and belly
+> dump / aggregate trailers. Serving Texas, the Permian Basin and the United States.
+
+Contact: Phone/WhatsApp +1 956-378-5818 · Laredo, TX · https://gallegossales.com/contact/
+
+## Products
+- [Scrap Metal & Demolition Dump Trailers](${SITE}/scrap-metal-demolition/): HARDOX 450 end dumps, 80–96 yd³, reinforced quarter frame, spring or air ride.
+- [Vacuum Tank Trailers](${SITE}/liquid/): 130–150 Bbl, lightweight aluminum or stainless (ASTM A36), USDOT 406 / ASME / R-Stamp. For oilfield fluids and produced water.
+- [Dry Bulk Pneumatic Trailers](${SITE}/bulk/): steel and aluminum, 1,040–1,400 ft³, for cement, lime and fine powders.
+- [Belly Dump & Aggregate Trailers](${SITE}/construction-aggregates/): HARDOX 450 belly dump and California Dirt Dauber sets for aggregates and asphalt.
+
+## Company
+- [About](${SITE}/about/)
+- [Contact & Quote](${SITE}/contact/)
+- [FAQ](${SITE}/faq/)
+`;
+writeFileSync(resolve(ROOT, "llms.txt"), llms);
+console.log("built llms.txt");
 
 console.log("\nDone. Generated", pages.length, "pages.");

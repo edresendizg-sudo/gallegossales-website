@@ -23,19 +23,44 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://gallegossales.com/"
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://gallegossales.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Vacuum Tank Trailers",
+            "item": "https://gallegossales.com/liquid/"
+          }
+        ]
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Vacuum Tank Trailers",
-        "item": "https://gallegossales.com/liquid/"
+        "@type": "Product",
+        "name": "Aluminum / Stainless Vacuum Tank Trailer",
+        "brand": {
+          "@type": "Brand",
+          "name": "Gallegos"
+        },
+        "category": "Vacuum Tank Trailers",
+        "description": "Vacuum tank trailer, 130–150 Bbl, in lightweight aluminum or stainless steel (ASTM A36). Two-piece cylindrical design; USDOT 406 / R-Stamp / ASME certified. For oilfield mud, produced water and chemical waste.",
+        "image": "https://gallegossales.com/assets/img/vacuum-tank-trailer.svg",
+        "url": "https://gallegossales.com/liquid/",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@id": "https://gallegossales.com/#business"
+          },
+          "areaServed": "US"
+        }
       }
     ]
   }
@@ -150,6 +175,7 @@
           <h4>Company</h4>
           <ul class="footer-links">
             <li><a href="/about/">About Us</a></li>
+            <li><a href="/faq/">FAQ</a></li>
             <li><a href="/contact/">Contact</a></li>
             <li><a href="tel:+19563785818">956-378-5818</a></li>
             <li><a href="https://wa.me/19563785818" rel="noopener">WhatsApp</a></li>
