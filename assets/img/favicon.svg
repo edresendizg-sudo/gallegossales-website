@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gallegos Trailers">
+  <defs>
+    <radialGradient id="fvRed" cx="0.5" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#f5333a"/><stop offset="0.6" stop-color="#d8151c"/><stop offset="1" stop-color="#a30d12"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#fvRed)"/>
+  <rect y="45" width="64" height="19" fill="#26292e"/>
+  <text x="33" y="42" text-anchor="middle" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-style="italic" font-size="40" fill="#ffffff" stroke="#6f090d" stroke-width="1" paint-order="stroke">G</text>
+  <text x="32" y="59" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="800" font-style="italic" fill="#ffffff" letter-spacing="1">TRAILERS</text>
+</svg>
