@@ -324,12 +324,12 @@ p { margin: 0 0 1rem; }
 }
 .field { margin-bottom: 1.1rem; }
 .field label { display: block; font-weight: 700; color: var(--navy); font-size: .92rem; margin-bottom: .4rem; }
-.field input, .field textarea {
+.field input, .field textarea, .field select {
   width: 100%; padding: .8rem .9rem; font: inherit; color: var(--ink);
   border: 1.5px solid var(--line); border-radius: var(--radius); background: #fff;
   transition: border-color .15s, box-shadow .15s;
 }
-.field input:focus, .field textarea:focus {
+.field input:focus, .field textarea:focus, .field select:focus {
   outline: none; border-color: var(--steel);
   box-shadow: 0 0 0 3px rgba(74,103,135,.18);
 }
