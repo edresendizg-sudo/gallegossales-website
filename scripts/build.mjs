@@ -21,6 +21,7 @@ const NAV = [
   { href: "/liquid/", label: "Vacuum Tank", key: "liquid" },
   { href: "/scrap-metal-demolition/", label: "Scrap &amp; Demolition", key: "scrap" },
   { href: "/construction-aggregates/", label: "Construction", key: "construction" },
+  { href: "/single-hopper/", label: "Single Hopper", key: "hopper" },
   { href: "/about/", label: "About", key: "about" },
   { href: "/contact/", label: "Contact", key: "contact" },
 ];
@@ -66,6 +67,7 @@ const footer = `  <footer class="site-footer">
             <li><a href="/liquid/">Vacuum Tank / Oilfield</a></li>
             <li><a href="/scrap-metal-demolition/">Scrap Metal &amp; Demolition</a></li>
             <li><a href="/construction-aggregates/">Construction &amp; Aggregates</a></li>
+            <li><a href="/single-hopper/">Single Hopper / Barite</a></li>
           </ul>
         </div>
         <div>
@@ -287,13 +289,13 @@ pages.push({
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">What we build</span>
-          <h2>Four trailer categories for heavy-haul work</h2>
+          <h2>Five trailer categories for heavy-haul work</h2>
           <p class="lead">Every trailer we sell is spec'd for a specific industry &mdash; from demolition debris and scrap metal to oilfield fluids, fine dry powders and construction aggregates.</p>
         </div>
 
         <div class="cat-grid">
           <a class="cat-card" href="/scrap-metal-demolition/">
-            <img class="thumb" src="/assets/img/scrap-end-dump.webp" width="1000" height="750" loading="lazy" alt="Demolition end dump trailer built with HARDOX 450 steel for scrap metal">
+            <img class="thumb" src="/assets/img/scrap-steco-type.webp" width="1000" height="750" loading="lazy" alt="STECO type end dump trailer for scrap metal and demolition">
             <div class="body">
               <h3>Scrap Metal &amp; Demolition</h3>
               <p>80&ndash;96 yd&sup3; HARDOX 450 end dumps with a reinforced quarter frame &mdash; built to haul demolition debris and scrap metal.</p>
@@ -302,7 +304,7 @@ pages.push({
           </a>
 
           <a class="cat-card" href="/liquid/">
-            <img class="thumb" src="/assets/img/vacuum-tank.webp" width="1000" height="750" loading="lazy" alt="Aluminum vacuum tank trailer for oilfield and produced water hauling">
+            <img class="thumb" src="/assets/img/vacuum-tank-2.webp" width="1000" height="750" loading="lazy" alt="Aluminum vacuum tank trailer for oilfield and produced water hauling">
             <div class="body">
               <h3>Vacuum Tank / Oilfield</h3>
               <p>Lightweight aluminum &amp; stainless 130&ndash;150 Bbl vacuum tanks for produced water and oilfield fluids. USDOT 406 / ASME.</p>
@@ -320,11 +322,20 @@ pages.push({
           </a>
 
           <a class="cat-card" href="/construction-aggregates/">
-            <img class="thumb" src="/assets/img/construction-bottom-dump.webp" width="1000" height="750" loading="lazy" alt="Belly dump trailer for construction aggregates and asphalt">
+            <img class="thumb" src="/assets/img/construction-half-round.webp" width="1000" height="750" loading="lazy" alt="Half round end dump trailer for construction and aggregates">
             <div class="body">
               <h3>Construction &amp; Aggregates</h3>
-              <p>Belly dump and Dirt Dauber sets in HARDOX 450 for aggregates, asphalt and dirt.</p>
+              <p>Half round end dumps for construction, demolition, aggregates, agriculture and industrial applications.</p>
               <span class="more">View aggregate trailers &rarr;</span>
+            </div>
+          </a>
+
+          <a class="cat-card" href="/single-hopper/">
+            <img class="thumb" src="/assets/img/single-hopper-barite.webp" width="1000" height="750" loading="lazy" alt="Single hopper pneumatic trailer for barite and heavy powders">
+            <div class="body">
+              <h3>Single Hopper / Barite</h3>
+              <p>Single-hopper pneumatic trailers for barite, bentonite and dense, high-density powders.</p>
+              <span class="more">View single hopper trailers &rarr;</span>
             </div>
           </a>
         </div>
@@ -406,7 +417,7 @@ pages.push({
   active: "bulk",
   title: "Dry Bulk Pneumatic Trailers for Sale in Texas | Gallegos Trailer Sales",
   description:
-    "Steel and aluminum pneumatic dry bulk trailers, 1,040–1,400 ft³, plus a single-hopper model for barite and heavy powders. Built direct from the manufacturer in Laredo, TX.",
+    "Steel and aluminum pneumatic dry bulk trailers, 1,040–1,400 ft³, for cement, lime and fine powders. Low tare weight, high capacity. Built direct from the manufacturer in Laredo, TX.",
   canonical: "/bulk/",
   ogImage: "/assets/img/dry-bulk-pneumatic.webp",
   jsonld: catalogLD("Dry Bulk Pneumatic Trailers", "/bulk/", [
@@ -420,16 +431,11 @@ pages.push({
       image: "/assets/img/dry-bulk-pneumatic-2.webp",
       description: "Lightweight aluminum pneumatic dry bulk trailer, 1,040–1,400 ft³, with the lowest tare weight on the market. 2 axles 9,920 lbs, 3 axles 14,550 lbs.",
     },
-    {
-      name: "Single Hopper Pneumatic Dry Bulk Trailer",
-      image: "/assets/img/single-hopper-barite.webp",
-      description: "Single-hopper pneumatic dry bulk trailer for barite and dense, high-density powders. Low-tare aluminum build for oilfield drilling-mud and mineral hauling.",
-    },
   ]),
   body: `${pageHero({
     eyebrow: "Dry Bulk / Pneumatic",
     h1: "Dry Bulk Pneumatic Trailers for Sale in Texas",
-    lead: "Pneumatic dry bulk trailers engineered for cement, lime and fine powders — available in steel and lightweight aluminum — plus a single-hopper model for barite and heavy powders — with fast, clean load and unload.",
+    lead: "Pneumatic dry bulk trailers engineered for cement, lime and fine powders — available in steel and lightweight aluminum, with 1,040 to 1,400 ft&sup3; of capacity and fast, clean load and unload.",
     crumb: "Dry Bulk",
   })}
 
@@ -464,10 +470,45 @@ ${product({
       "Robust, easy to clean, reliable and durable",
     ],
   })}
+      </div>
+    </section>
+
+${ctaBand}`,
+});
+
+// ---------- SINGLE HOPPER ----------
+pages.push({
+  file: "single-hopper/index.html",
+  path: "/single-hopper/",
+  active: "hopper",
+  title: "Single Hopper Pneumatic Trailers for Barite | Gallegos Trailer Sales",
+  description:
+    "Single hopper pneumatic trailers for barite, bentonite and dense, high-density powders. Low-tare aluminum build, fast pneumatic load and unload through a single discharge cone. Built direct from the manufacturer in Laredo, TX.",
+  canonical: "/single-hopper/",
+  ogImage: "/assets/img/single-hopper-barite.webp",
+  jsonld: catalogLD("Single Hopper Pneumatic Trailers", "/single-hopper/", [
+    {
+      name: "Single Hopper Pneumatic Trailer",
+      image: "/assets/img/single-hopper-barite.webp",
+      description: "Single-hopper pneumatic trailer for barite and dense, high-density powders. Low-tare aluminum build with fast pneumatic load and unload through a single discharge cone. For oilfield drilling-mud and mineral hauling.",
+    },
+  ]),
+  body: `${pageHero({
+    eyebrow: "Single Hopper / Barite",
+    h1: "Single Hopper Pneumatic Trailers",
+    lead: "A single-hopper design built for barite, bentonite and dense, high-density powders &mdash; low-tare aluminum construction with fast pneumatic load and unload for oilfield drilling-mud and mineral hauling.",
+    crumb: "Single Hopper",
+  })}
+
+    <section class="section">
+      <div class="container">
 ${product({
     img: "/assets/img/single-hopper-barite.webp",
-    alt: "Single hopper pneumatic dry bulk trailer for barite and heavy powders",
-    name: "Single Hopper Pneumatic Dry Bulk Trailer",
+    alt: "Single hopper pneumatic trailer for barite and heavy powders",
+    gallery: [
+      { img: "/assets/img/single-hopper-barite-2.webp", alt: "Single hopper pneumatic barite trailer at the Gallegos plant" },
+    ],
+    name: "Single Hopper Pneumatic Trailer",
     tagline: "A single-hopper design built for barite and dense, high-density powders.",
     pills: ["Barite", "Drilling mud", "Heavy powders"],
     specs: [
@@ -512,6 +553,10 @@ pages.push({
 ${product({
     img: "/assets/img/vacuum-tank.webp",
     alt: "Vacuum tank trailer, 130 to 150 Bbl, for oilfield and produced water hauling",
+    gallery: [
+      { img: "/assets/img/vacuum-tank-2.webp", alt: "Aluminum vacuum tank trailer with Challenger pump, side view" },
+      { img: "/assets/img/vacuum-tank-3.webp", alt: "Row of aluminum vacuum tank trailers at the Gallegos plant" },
+    ],
     name: "Vacuum Tank Trailer",
     tagline: "Lightweight aluminum or stainless build for oilfield mud, produced water and chemical waste.",
     pills: ["Aluminum water vac", "Permian Basin", "Produced water hauling", "Oilfield fluid transport"],
@@ -640,59 +685,36 @@ pages.push({
   file: "construction-aggregates/index.html",
   path: "/construction-aggregates/",
   active: "construction",
-  title: "Belly Dump & Transfer Dump Trailers for Aggregates | Gallegos Trailer Sales",
+  title: "Half Round End Dump Trailers | Gallegos Trailer Sales",
   description:
-    "Belly dump and California Dirt Dauber set trailers in HARDOX 450 for aggregates and asphalt. Pneumatic door opening, HUTCH or Hendrickson suspension, Accuride or Alcoa wheels. Built in Laredo, TX.",
+    "Half round end dump trailers designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications — simple, maintenance-free design, rugged reliability and single point suspension. Built in Laredo, TX.",
   canonical: "/construction-aggregates/",
-  ogImage: "/assets/img/construction-bottom-dump.webp",
-  jsonld: catalogLD("Belly Dump & Transfer Dump Trailers", "/construction-aggregates/", [
+  ogImage: "/assets/img/construction-half-round.webp",
+  jsonld: catalogLD("Half Round End Dump Trailers", "/construction-aggregates/", [
     {
-      name: "Belly / Bottom Dump Trailer (HARDOX 450)",
-      image: "/assets/img/construction-bottom-dump.webp",
-      description: "HARDOX 450 belly / bottom dump trailer with pneumatic door opening, HUTCH Spring or Hendrickson Intraax suspension and Accuride or Alcoa wheels. For aggregates and asphalt.",
-    },
-    {
-      name: "California Dirt Dauber Set",
-      image: "/assets/img/construction-bottom-dump-2.webp",
-      description: "California Dirt Dauber dump box set, 26 yd³, unit weight 10,500 lbs, in hybrid aluminum and stainless-steel wall combinations with super single or dual tires.",
+      name: "Half Round End Dump",
+      image: "/assets/img/construction-half-round.webp",
+      description: "Half round end dump designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications — trusted for its simple, maintenance-free design and rugged reliability. Single point suspension.",
     },
   ]),
   body: `${pageHero({
     eyebrow: "Construction &amp; Aggregates",
-    h1: "Belly Dump &amp; Transfer Dump Trailers for Aggregates",
-    lead: "Bottom dump and transfer dump trailers built for aggregates, asphalt and dirt &mdash; HARDOX 450 construction, pneumatic door opening and a wide range of suspension and wheel options.",
+    h1: "Half Round End Dump Trailers",
+    lead: "Half round end dumps for construction, demolition, aggregates, agriculture and industrial applications &mdash; trusted for their simple, maintenance-free design and rugged reliability.",
     crumb: "Construction &amp; Aggregates",
   })}
 
     <section class="section">
       <div class="container">
 ${product({
-    img: "/assets/img/construction-bottom-dump.webp",
-    alt: "Belly bottom dump trailer in HARDOX 450 for aggregates and asphalt",
-    name: "Belly / Bottom Dump Trailer",
-    tagline: "Built for aggregates and asphalt, with pneumatic door opening.",
-    pills: ["Aggregates", "Asphalt", "HARDOX 450"],
+    img: "/assets/img/construction-half-round.webp",
+    alt: "Half round end dump trailer for construction, demolition, aggregates, agriculture and industrial applications",
+    name: "Half Round End Dump",
+    tagline: "Simple, maintenance-free design with rugged reliability.",
+    pills: ["Construction", "Demolition", "Aggregates", "Agriculture &amp; industrial"],
     specs: [
-      "Built in HARDOX 450 steel",
-      "Pneumatic door opening",
-      "<b>Suspension:</b> HUTCH Spring or Hendrickson Intraax",
-      "<b>Wheels:</b> Accuride steel or Alcoa aluminum",
-      "Ideal for transporting aggregates and asphalt",
-    ],
-  })}
-${product({
-    img: "/assets/img/construction-bottom-dump-2.webp",
-    alt: "California Dirt Dauber set dump trailers with aluminum and stainless steel walls",
-    name: "California Dirt Dauber Set",
-    tagline: "A versatile dump box set with a wide range of build combinations.",
-    reverse: true,
-    pills: ["26 yd³", "Super singles or duals", "Hybrid aluminum / stainless"],
-    specs: [
-      "<b>Capacity:</b> 26 yd&sup3;",
-      "<b>Unit weight:</b> 10,500 lbs",
-      "Available in hybrid aluminum and stainless-steel wall combinations",
-      "Choice of super single or dual tires",
-      "A wide variety of dump box trailer combinations",
+      "Designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications &mdash; trusted for their simple and maintenance-free design and rugged reliability",
+      "<b>Suspension:</b> Single Point",
     ],
   })}
       </div>
@@ -726,7 +748,6 @@ pages.push({
         </div>
 
         <div class="stat-row">
-          <div class="stat"><b>4</b><span>Trailer categories</span></div>
           <div class="stat"><b>Factory</b><span>Direct pricing</span></div>
           <div class="stat"><b>HARDOX 450</b><span>Heavy-duty steel</span></div>
           <div class="stat"><b>USDOT / ASME</b><span>Certified tanks</span></div>
@@ -785,6 +806,24 @@ pages.push({
               <div class="field">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="trailer-type">Trailer type</label>
+                <select id="trailer-type" name="trailer_type" required>
+                  <option value="" disabled selected>Select the unit you need quoted&hellip;</option>
+                  <option>Dry Bulk / Pneumatic (Steel)</option>
+                  <option>Dry Bulk / Pneumatic (Aluminum)</option>
+                  <option>Single Hopper / Barite</option>
+                  <option>Vacuum Tank / Oilfield</option>
+                  <option>Demolition End Dump</option>
+                  <option>STECO Type End Dump</option>
+                  <option>Half Round End Dump</option>
+                  <option>Other</option>
+                </select>
               </div>
               <div class="field">
                 <label for="message">Describe your new equipment</label>
@@ -853,7 +892,7 @@ const faqs = [
   },
   {
     q: "What types of trailers does Gallegos Trailer Sales offer?",
-    a: `We offer four main categories: <a href="/scrap-metal-demolition/">scrap metal &amp; demolition dump trailers</a> (HARDOX 450 end dumps), <a href="/liquid/">vacuum tank trailers</a> for oilfield and liquid hauling (lightweight aluminum or stainless), <a href="/bulk/">dry bulk pneumatic trailers</a>, and <a href="/construction-aggregates/">belly dump &amp; aggregate trailers</a>.`,
+    a: `We offer five main categories: <a href="/scrap-metal-demolition/">scrap metal &amp; demolition dump trailers</a> (HARDOX 450 end dumps), <a href="/liquid/">vacuum tank trailers</a> for oilfield and liquid hauling (lightweight aluminum or stainless), <a href="/bulk/">dry bulk pneumatic trailers</a>, <a href="/single-hopper/">single hopper pneumatic trailers</a> for barite, and <a href="/construction-aggregates/">half round end dump &amp; aggregate trailers</a>.`,
   },
   {
     q: "Do you sell aluminum vacuum tank trailers for the oilfield?",
