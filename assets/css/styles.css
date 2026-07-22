@@ -423,3 +423,14 @@ p { margin: 0 0 1rem; }
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+.product-thumbs { display: flex; gap: .6rem; margin-top: .6rem; }
+.product-thumbs img { flex: 1 1 0; min-width: 0; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow-sm); background: var(--steel-100); }
+
+.steel-section { background: #f5f7fa; }
+.steel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 1.8rem); margin-top: 1.6rem; }
+.steel-card { border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); }
+.steel-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--steel-100); }
+.steel-body { padding: 1.1rem 1.25rem 1.4rem; }
+.steel-body h3 { margin-bottom: .4rem; }
+@media (max-width: 640px) { .steel-grid { grid-template-columns: 1fr; } }
