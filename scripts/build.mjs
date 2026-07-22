@@ -22,6 +22,7 @@ const NAV = [
   { href: "/scrap-metal-demolition/", label: "Scrap &amp; Demolition", key: "scrap" },
   { href: "/construction-aggregates/", label: "Construction", key: "construction" },
   { href: "/single-hopper/", label: "Single Hopper", key: "hopper" },
+  { href: "/warranty/", label: "Warranty", key: "warranty" },
   { href: "/about/", label: "About", key: "about" },
   { href: "/contact/", label: "Contact", key: "contact" },
 ];
@@ -74,6 +75,7 @@ const footer = `  <footer class="site-footer">
           <h4>Company</h4>
           <ul class="footer-links">
             <li><a href="/about/">About Us</a></li>
+            <li><a href="/warranty/">Warranty</a></li>
             <li><a href="/faq/">FAQ</a></li>
             <li><a href="/contact/">Contact</a></li>
             <li><a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></li>
@@ -185,6 +187,55 @@ function catalogLD(pageName, pageUrl, products) {
       })),
     ],
   };
+}
+
+// ---- Form field + Web3Forms helpers (contact + warranty forms) ----
+const ACCESS_KEY = "8d4ab1e4-da84-43b9-9388-45d005a95463"; // Web3Forms (same as contact)
+const TRAILER_TYPES = [
+  "Dry Bulk / Pneumatic (Steel)",
+  "Dry Bulk / Pneumatic (Aluminum)",
+  "Single Hopper / Barite",
+  "Vacuum Tank / Oilfield",
+  "Demolition End Dump",
+  "STECO Type End Dump",
+  "Half Round End Dump",
+  "Other",
+];
+function web3Hidden(subject) {
+  return `              <input type="hidden" name="access_key" value="${ACCESS_KEY}">
+              <input type="hidden" name="subject" value="${subject}">
+              <input type="hidden" name="from_name" value="Gallegos Trailers Website">
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">`;
+}
+function fld(id, label, o = {}) {
+  const req = o.required ? " required" : "";
+  const star = o.required ? ' <span class="req" aria-hidden="true">*</span>' : "";
+  const ac = o.autocomplete ? ` autocomplete="${o.autocomplete}"` : "";
+  const ph = o.placeholder ? ` placeholder="${o.placeholder}"` : "";
+  return `              <div class="field">
+                <label for="${id}">${label}${star}</label>
+                <input type="${o.type || "text"}" id="${id}" name="${o.name || id}"${ac}${ph}${req}>
+              </div>`;
+}
+function sel(id, label, options, o = {}) {
+  const req = o.required ? " required" : "";
+  const star = o.required ? ' <span class="req" aria-hidden="true">*</span>' : "";
+  return `              <div class="field">
+                <label for="${id}">${label}${star}</label>
+                <select id="${id}" name="${o.name || id}"${req}>
+                  <option value="" disabled selected>Select&hellip;</option>
+${options.map((op) => `                  <option>${op}</option>`).join("\n")}
+                </select>
+              </div>`;
+}
+function area(id, label, o = {}) {
+  const req = o.required ? " required" : "";
+  const star = o.required ? ' <span class="req" aria-hidden="true">*</span>' : "";
+  const ph = o.placeholder ? ` placeholder="${o.placeholder}"` : "";
+  return `              <div class="field">
+                <label for="${id}">${label}${star}</label>
+                <textarea id="${id}" name="${o.name || id}"${ph}${req}></textarea>
+              </div>`;
 }
 
 // Bottom CTA band, reused on category/about pages
@@ -789,7 +840,7 @@ pages.push({
           <div class="form-card">
             <h2 class="mt-0">Request a quote</h2>
             <p class="lead" style="font-size:1rem;">Describe your new equipment and we'll be in touch shortly.</p>
-            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <form id="contact-form" class="lead-form" action="https://api.web3forms.com/submit" method="POST" data-success="Thank you — your message has been sent. We'll be in touch shortly.">
               <input type="hidden" name="access_key" value="8d4ab1e4-da84-43b9-9388-45d005a95463">
               <input type="hidden" name="subject" value="New quote request — gallegossales.com">
               <input type="hidden" name="from_name" value="Gallegos Trailers Website">
@@ -876,6 +927,162 @@ pages.push({
     </section>`,
 });
 
+// ---------- WARRANTY HUB ----------
+pages.push({
+  file: "warranty/index.html",
+  path: "/warranty/",
+  active: "warranty",
+  title: "Warranty — Registration & Claims | Gallegos Trailer Sales",
+  description:
+    "Register your new Gallegos trailer or file a warranty claim. Learn how the warranty process works and start online, or call 956-378-5818 in Laredo, TX.",
+  canonical: "/warranty/",
+  body: `${pageHero({
+    eyebrow: "Warranty",
+    h1: "Warranty Registration &amp; Claims",
+    lead: "Protect your investment. Register your new unit to activate its warranty, and file a claim online if you ever need service.",
+    crumb: "Warranty",
+  })}
+
+    <section class="section">
+      <div class="container">
+        <div class="cat-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+          <a class="cat-card" href="/warranty-registration/">
+            <div class="body">
+              <span class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+              <h3>Register your unit</h3>
+              <p>Activate the warranty on your new trailer. Registration should be completed at delivery to validate coverage and record the first owner as required by U.S. DOT.</p>
+              <span class="more">Register a trailer &rarr;</span>
+            </div>
+          </a>
+          <a class="cat-card" href="/warranty-claims/">
+            <div class="body">
+              <span class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6M9 11h2"/></svg></span>
+              <h3>File a warranty claim</h3>
+              <p>Report a warranty issue and upload photos. <strong>Do not begin repairs</strong> until we issue a warranty authorization number.</p>
+              <span class="more">Start a claim &rarr;</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="section-head" style="margin-top:2.6rem;">
+          <h2>How the warranty process works</h2>
+        </div>
+        <ol class="steps">
+          <li><b>Register at delivery.</b> Submit the registration form when you take delivery so your warranty is validated and your unit is on file.</li>
+          <li><b>Report an issue.</b> If a covered problem appears, file a claim with your serial number and photos <em>before</em> any repair work begins.</li>
+          <li><b>Get authorization.</b> We review the claim and issue a warranty authorization number (and a purchase order when applicable).</li>
+          <li><b>Complete the repair.</b> Once authorized, proceed with the repair and send your invoice referencing the trailer serial number and the warranty number.</li>
+        </ol>
+        <p class="form-note">Questions about coverage? Call <a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a> or message us on WhatsApp.</p>
+      </div>
+    </section>
+
+${ctaBand}`,
+});
+
+// ---------- WARRANTY REGISTRATION ----------
+pages.push({
+  file: "warranty-registration/index.html",
+  path: "/warranty-registration/",
+  active: "warranty",
+  title: "Warranty Registration | Gallegos Trailer Sales",
+  description:
+    "Register your new Gallegos trailer to activate its warranty. Complete the online warranty registration form with your unit's serial number and delivery details.",
+  canonical: "/warranty-registration/",
+  body: `${pageHero({
+    eyebrow: "Warranty",
+    h1: "Warranty Registration",
+    lead: "Register your new unit to activate its warranty. Registration should be completed at the time of delivery — it validates your coverage and records the first owner as required by U.S. DOT and the National Traffic and Motor Vehicle Safety Act.",
+    crumb: '<a href="/warranty/">Warranty</a> <span>/</span> Registration',
+  })}
+
+    <section class="section">
+      <div class="container">
+        <div class="form-card" style="max-width:820px;margin:0 auto;">
+          <h2 class="mt-0">Register your trailer</h2>
+          <p class="lead" style="font-size:1rem;">Fields marked <span class="req">*</span> are required.</p>
+          <form id="registration-form" class="lead-form" action="https://api.web3forms.com/submit" method="POST" data-success="Thank you — your warranty registration has been submitted. We'll confirm your coverage shortly.">
+${web3Hidden("New warranty registration — gallegossales.com")}
+            <div class="form-grid">
+${fld("owner", "Owner / Company name", { required: true, autocomplete: "organization" })}
+${fld("contact", "Contact name", { required: true, autocomplete: "name" })}
+${fld("email", "Email", { type: "email", required: true, autocomplete: "email" })}
+${fld("phone", "Phone", { type: "tel", required: true, autocomplete: "tel" })}
+${fld("address", "Address", { autocomplete: "street-address" })}
+${fld("city", "City", { autocomplete: "address-level2" })}
+${fld("state", "State", { autocomplete: "address-level1" })}
+${fld("zip", "ZIP / Postal code", { autocomplete: "postal-code" })}
+${sel("trailer_type", "Trailer type", TRAILER_TYPES, { required: true })}
+${fld("serial", "Serial number / VIN", { required: true, placeholder: "As shown on the unit plate" })}
+${fld("model", "Model / configuration")}
+${fld("dealer", "Dealer / seller")}
+${fld("delivery_date", "Date of delivery", { type: "date", required: true })}
+            </div>
+${area("notes", "Additional notes", { placeholder: "Options, spec details, anything we should have on file…" })}
+            <label class="check"><input type="checkbox" name="consent" required> I confirm the information above is accurate. <span class="req">*</span></label>
+            <button type="submit" class="btn btn-primary btn-lg">Submit Registration</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+            <p class="form-note">Prefer to register by phone? Call <a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a>.</p>
+          </form>
+        </div>
+      </div>
+    </section>`,
+});
+
+// ---------- WARRANTY CLAIMS ----------
+pages.push({
+  file: "warranty-claims/index.html",
+  path: "/warranty-claims/",
+  active: "warranty",
+  title: "Warranty Claims | Gallegos Trailer Sales",
+  description:
+    "File a warranty claim for your Gallegos trailer. Submit your serial number, a description of the issue and photos. Do not begin repairs before receiving a warranty authorization number.",
+  canonical: "/warranty-claims/",
+  body: `${pageHero({
+    eyebrow: "Warranty",
+    h1: "Warranty Claims",
+    lead: "Report a warranty issue with your Gallegos trailer. Submit the claim below and we'll respond with next steps.",
+    crumb: '<a href="/warranty/">Warranty</a> <span>/</span> Claims',
+  })}
+
+    <section class="section">
+      <div class="container">
+        <div class="notice">
+          <strong>Important:</strong> Do <u>not</u> begin any repairs before you receive a <b>warranty authorization number</b> from us. Repairs started without authorization may not be covered. When you invoice us for an authorized repair, include the trailer <b>serial number</b> and the <b>warranty number</b> we provide.
+        </div>
+
+        <div class="form-card" style="max-width:820px;margin:1.6rem auto 0;">
+          <h2 class="mt-0">Submit a warranty claim</h2>
+          <p class="lead" style="font-size:1rem;">Fields marked <span class="req">*</span> are required.</p>
+          <form id="claim-form" class="lead-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" data-success="Thank you — your warranty claim has been received. We'll review it and reply with a warranty authorization number and next steps.">
+${web3Hidden("New warranty claim — gallegossales.com")}
+            <div class="form-grid">
+${fld("owner", "Owner / Company name", { required: true, autocomplete: "organization" })}
+${fld("contact", "Contact name", { required: true, autocomplete: "name" })}
+${fld("email", "Email", { type: "email", required: true, autocomplete: "email" })}
+${fld("phone", "Phone", { type: "tel", required: true, autocomplete: "tel" })}
+${sel("trailer_type", "Trailer type", TRAILER_TYPES, { required: true })}
+${fld("serial", "Serial number / VIN", { required: true, placeholder: "As shown on the unit plate" })}
+${fld("in_service", "Delivery / in-service date", { type: "date" })}
+${fld("part", "Affected part number(s)")}
+${fld("estimate", "Repair estimate (USD)", { placeholder: "If your shop is incurring costs" })}
+            </div>
+${area("issue", "Describe the problem", { required: true, placeholder: "What failed, when it started, and where it is on the unit…" })}
+            <div class="field">
+              <label for="attachment">Photos / documents</label>
+              <input type="file" id="attachment" name="attachment" accept="image/*,.pdf">
+              <p class="form-note">Attach a photo of the issue and the serial-number plate if you can &mdash; it speeds up review. To send more, email them to us after submitting.</p>
+            </div>
+            <label class="check"><input type="checkbox" name="consent" required> I understand repairs should not begin until a warranty authorization number is issued. <span class="req">*</span></label>
+            <button type="submit" class="btn btn-primary btn-lg">Submit Claim</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+            <p class="form-note">Need help? Call <a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a> or message us on WhatsApp.</p>
+          </form>
+        </div>
+      </div>
+    </section>`,
+});
+
 // ---------- FAQ ----------
 // Buyer-intent questions phrased the way people ask search engines and AI
 // assistants. Answered in real HTML text + FAQPage schema for rich results
@@ -908,6 +1115,10 @@ const faqs = [
   {
     q: "How do I get a quote for a new trailer?",
     a: `Call or WhatsApp ${PHONE_DISPLAY}, or fill out the form on our <a href="/contact/">contact page</a> describing the trailer you need (type, capacity, quantity and timeline). We'll get back to you with a factory-direct quote.`,
+  },
+  {
+    q: "How do I register my trailer or file a warranty claim?",
+    a: `Register your new unit at delivery using our <a href="/warranty-registration/">warranty registration form</a> to activate coverage. To report an issue, use the <a href="/warranty-claims/">warranty claims form</a> — but do not begin repairs until we issue a warranty authorization number.`,
   },
 ];
 
@@ -1076,6 +1287,9 @@ Contact: Phone/WhatsApp +1 956-378-5818 · Laredo, TX · https://gallegossales.c
 
 ## Company
 - [About](${SITE}/about/)
+- [Warranty (registration & claims)](${SITE}/warranty/)
+- [Register a unit](${SITE}/warranty-registration/)
+- [File a warranty claim](${SITE}/warranty-claims/)
 - [Contact & Quote](${SITE}/contact/)
 - [FAQ](${SITE}/faq/)
 `;
