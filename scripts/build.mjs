@@ -36,7 +36,7 @@ function header(active) {
     <div class="container">
       <nav class="nav" aria-label="Main navigation">
         <a class="brand" href="/" aria-label="Gallegos Trailers — Home">
-          <img class="brand-logo" src="/assets/img/gallegos-logo.png" width="740" height="371" alt="Gallegos Trailers">
+          <img class="brand-logo" src="/assets/img/gallegos-logo.png" width="1024" height="368" alt="Gallegos Trailers">
         </a>
         <button class="nav-toggle" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">
           <span></span>
@@ -55,7 +55,7 @@ const footer = `  <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="brand" href="/" style="margin-bottom:1rem;" aria-label="Gallegos Trailers — Home">
-            <img class="brand-logo" src="/assets/img/gallegos-logo.png" width="740" height="371" alt="Gallegos Trailers" style="height:60px;">
+            <img class="brand-logo" src="/assets/img/gallegos-logo.png" width="1024" height="368" alt="Gallegos Trailers" style="height:60px;">
           </a>
           <p>New semi-trailers built direct from the manufacturer for scrap &amp; demolition, oilfield &amp; liquid, dry bulk and aggregate hauling.</p>
         </div>
@@ -96,7 +96,7 @@ const footer = `  <footer class="site-footer">
 
 // ---- Page shell ----
 function page({ path, active, title, description, canonical, jsonld, ogImage, body, noindex }) {
-  const img = ogImage || "/assets/img/steel-pneumatic-dry-bulk-trailer.svg";
+  const img = ogImage || "/assets/img/dry-bulk-pneumatic.webp";
   const ld = jsonld
     ? `\n  <script type="application/ld+json">\n${JSON.stringify(jsonld, null, 2)
         .split("\n")
@@ -293,7 +293,7 @@ pages.push({
 
         <div class="cat-grid">
           <a class="cat-card" href="/scrap-metal-demolition/">
-            <img class="thumb" src="/assets/img/demolition-end-dump-trailer.svg" width="800" height="500" loading="lazy" alt="Demolition end dump trailer built with HARDOX 450 steel for scrap metal">
+            <img class="thumb" src="/assets/img/scrap-end-dump.webp" width="1000" height="750" loading="lazy" alt="Demolition end dump trailer built with HARDOX 450 steel for scrap metal">
             <div class="body">
               <h3>Scrap Metal &amp; Demolition</h3>
               <p>80&ndash;96 yd&sup3; HARDOX 450 end dumps with a reinforced quarter frame &mdash; built to haul demolition debris and scrap metal.</p>
@@ -302,7 +302,7 @@ pages.push({
           </a>
 
           <a class="cat-card" href="/liquid/">
-            <img class="thumb" src="/assets/img/vacuum-tank-trailer.svg" width="800" height="500" loading="lazy" alt="Aluminum vacuum tank trailer for oilfield and produced water hauling">
+            <img class="thumb" src="/assets/img/vacuum-tank.webp" width="1000" height="750" loading="lazy" alt="Aluminum vacuum tank trailer for oilfield and produced water hauling">
             <div class="body">
               <h3>Vacuum Tank / Oilfield</h3>
               <p>Lightweight aluminum &amp; stainless 130&ndash;150 Bbl vacuum tanks for produced water and oilfield fluids. USDOT 406 / ASME.</p>
@@ -311,7 +311,7 @@ pages.push({
           </a>
 
           <a class="cat-card" href="/bulk/">
-            <img class="thumb" src="/assets/img/steel-pneumatic-dry-bulk-trailer.svg" width="800" height="500" loading="lazy" alt="Steel pneumatic dry bulk trailer for cement and fine powders">
+            <img class="thumb" src="/assets/img/dry-bulk-pneumatic.webp" width="1000" height="750" loading="lazy" alt="Steel pneumatic dry bulk trailer for cement and fine powders">
             <div class="body">
               <h3>Dry Bulk / Pneumatic</h3>
               <p>Steel and aluminum pneumatic trailers, 1,040&ndash;1,400 ft&sup3;, for cement, lime and fine powders.</p>
@@ -320,7 +320,7 @@ pages.push({
           </a>
 
           <a class="cat-card" href="/construction-aggregates/">
-            <img class="thumb" src="/assets/img/belly-dump-trailer.svg" width="800" height="500" loading="lazy" alt="Belly dump trailer for construction aggregates and asphalt">
+            <img class="thumb" src="/assets/img/construction-bottom-dump.webp" width="1000" height="750" loading="lazy" alt="Belly dump trailer for construction aggregates and asphalt">
             <div class="body">
               <h3>Construction &amp; Aggregates</h3>
               <p>Belly dump and Dirt Dauber sets in HARDOX 450 for aggregates, asphalt and dirt.</p>
@@ -377,16 +377,19 @@ ${ctaBand}`,
 });
 
 // Helper to render a product block
-function product({ img, alt, name, tagline, pills, specs, reverse }) {
+function product({ img, alt, name, tagline, pills, specs, reverse, gallery }) {
   const pillHtml = pills && pills.length
     ? `          <ul class="spec-pills">\n${pills.map((p) => `            <li>${p}</li>`).join("\n")}\n          </ul>\n`
+    : "";
+  const galleryHtml = gallery && gallery.length
+    ? `\n          <div class="product-thumbs">\n${gallery.map((g) => `            <img src="${g.img}" width="1000" height="750" loading="lazy" alt="${g.alt}">`).join("\n")}\n          </div>`
     : "";
   const specHtml = specs && specs.length
     ? `          <ul class="specs">\n${specs.map((s) => `            <li>${s}</li>`).join("\n")}\n          </ul>\n`
     : "";
   return `      <article class="product${reverse ? " reverse" : ""}">
         <div class="product-media">
-          <img src="${img}" width="800" height="500" loading="lazy" alt="${alt}">
+          <img src="${img}" width="1000" height="750" loading="lazy" alt="${alt}">${galleryHtml}
         </div>
         <div class="product-body">
           <h2>${name}</h2>
@@ -403,32 +406,37 @@ pages.push({
   active: "bulk",
   title: "Dry Bulk Pneumatic Trailers for Sale in Texas | Gallegos Trailer Sales",
   description:
-    "Steel and aluminum pneumatic dry bulk trailers, 1,040–1,400 ft³, for cement, lime and fine powders. Low tare weight, high capacity. Built direct from the manufacturer in Laredo, TX.",
+    "Steel and aluminum pneumatic dry bulk trailers, 1,040–1,400 ft³, plus a single-hopper model for barite and heavy powders. Built direct from the manufacturer in Laredo, TX.",
   canonical: "/bulk/",
-  ogImage: "/assets/img/steel-pneumatic-dry-bulk-trailer.svg",
+  ogImage: "/assets/img/dry-bulk-pneumatic.webp",
   jsonld: catalogLD("Dry Bulk Pneumatic Trailers", "/bulk/", [
     {
       name: "Steel Pneumatic Dry Bulk Trailer",
-      image: "/assets/img/steel-pneumatic-dry-bulk-trailer.svg",
+      image: "/assets/img/dry-bulk-pneumatic.webp",
       description: "Steel pneumatic dry bulk trailer, 1,040–1,400 ft³, for cement, lime and fine powders. 2 axles 13,448 lbs, 3 axles 17,857 lbs.",
     },
     {
       name: "Aluminum Pneumatic Dry Bulk Trailer",
-      image: "/assets/img/aluminum-pneumatic-dry-bulk-trailer.svg",
+      image: "/assets/img/dry-bulk-pneumatic-2.webp",
       description: "Lightweight aluminum pneumatic dry bulk trailer, 1,040–1,400 ft³, with the lowest tare weight on the market. 2 axles 9,920 lbs, 3 axles 14,550 lbs.",
+    },
+    {
+      name: "Single Hopper Pneumatic Dry Bulk Trailer",
+      image: "/assets/img/single-hopper-barite.webp",
+      description: "Single-hopper pneumatic dry bulk trailer for barite and dense, high-density powders. Low-tare aluminum build for oilfield drilling-mud and mineral hauling.",
     },
   ]),
   body: `${pageHero({
     eyebrow: "Dry Bulk / Pneumatic",
     h1: "Dry Bulk Pneumatic Trailers for Sale in Texas",
-    lead: "Pneumatic dry bulk trailers engineered for cement, lime and fine powders — available in steel and lightweight aluminum, with 1,040 to 1,400 ft&sup3; of capacity and fast, clean load and unload.",
+    lead: "Pneumatic dry bulk trailers engineered for cement, lime and fine powders — available in steel and lightweight aluminum — plus a single-hopper model for barite and heavy powders — with fast, clean load and unload.",
     crumb: "Dry Bulk",
   })}
 
     <section class="section">
       <div class="container">
 ${product({
-    img: "/assets/img/steel-pneumatic-dry-bulk-trailer.svg",
+    img: "/assets/img/dry-bulk-pneumatic.webp",
     alt: "Steel pneumatic dry bulk trailer with 1,400 cubic feet capacity",
     name: "Steel Pneumatic Dry Bulk Trailer",
     tagline: "Rugged steel construction for cement, lime and fine powders.",
@@ -441,7 +449,7 @@ ${product({
     ],
   })}
 ${product({
-    img: "/assets/img/aluminum-pneumatic-dry-bulk-trailer.svg",
+    img: "/assets/img/dry-bulk-pneumatic-2.webp",
     alt: "Lightweight aluminum pneumatic dry bulk trailer with low tare weight",
     name: "Aluminum Pneumatic Dry Bulk Trailer",
     tagline: "The lowest-tare-weight aluminum pneumatic trailer on the market.",
@@ -454,6 +462,19 @@ ${product({
       "Lowest tare weight on the market for maximum payload",
       "Recognized for high load capacity and efficient loading &amp; unloading",
       "Robust, easy to clean, reliable and durable",
+    ],
+  })}
+${product({
+    img: "/assets/img/single-hopper-barite.webp",
+    alt: "Single hopper pneumatic dry bulk trailer for barite and heavy powders",
+    name: "Single Hopper Pneumatic Dry Bulk Trailer",
+    tagline: "A single-hopper design built for barite and dense, high-density powders.",
+    pills: ["Barite", "Drilling mud", "Heavy powders"],
+    specs: [
+      "Single-hopper design optimized for dense products like barite and bentonite",
+      "Low-tare aluminum build reaches legal payload without excess volume",
+      "Fast pneumatic load and unload through a single discharge cone",
+      "Built for oilfield drilling-mud and mineral hauling",
     ],
   })}
       </div>
@@ -471,11 +492,11 @@ pages.push({
   description:
     "Lightweight aluminum and stainless vacuum tank trailers, 130–150 Bbl, for oilfield fluid transport, produced water hauling and chemical waste. USDOT 406 / ASME / R-Stamp certified. Permian Basin ready.",
   canonical: "/liquid/",
-  ogImage: "/assets/img/vacuum-tank-trailer.svg",
+  ogImage: "/assets/img/vacuum-tank.webp",
   jsonld: catalogLD("Vacuum Tank Trailers", "/liquid/", [
     {
       name: "Aluminum / Stainless Vacuum Tank Trailer",
-      image: "/assets/img/vacuum-tank-trailer.svg",
+      image: "/assets/img/vacuum-tank.webp",
       description: "Vacuum tank trailer, 130–150 Bbl, in lightweight aluminum or stainless steel (ASTM A36). Two-piece cylindrical design; USDOT 406 / R-Stamp / ASME certified. For oilfield mud, produced water and chemical waste.",
     },
   ]),
@@ -489,7 +510,7 @@ pages.push({
     <section class="section">
       <div class="container">
 ${product({
-    img: "/assets/img/vacuum-tank-trailer.svg",
+    img: "/assets/img/vacuum-tank.webp",
     alt: "Vacuum tank trailer, 130 to 150 Bbl, for oilfield and produced water hauling",
     name: "Vacuum Tank Trailer",
     tagline: "Lightweight aluminum or stainless build for oilfield mud, produced water and chemical waste.",
@@ -525,41 +546,89 @@ pages.push({
   active: "scrap",
   title: "Demolition & Scrap Metal Dump Trailers | HARDOX 450 | Gallegos Trailer Sales",
   description:
-    "Demolition end dump trailers, 80–96 yd³, built with HARDOX 450 steel and a reinforced quarter frame for demolition debris and scrap metal hauling. Spring ride or air ride. Made in Laredo, TX.",
+    "Demolition end dump trailers, 80–96 yd³, built with HARDOX 450 steel and a reinforced quarter frame for demolition debris and scrap metal hauling. Spring ride or air ride — including the STECO-type end dump known across the U.S. Northeast. Made in Laredo, TX.",
   canonical: "/scrap-metal-demolition/",
-  ogImage: "/assets/img/demolition-end-dump-trailer.svg",
+  ogImage: "/assets/img/scrap-end-dump.webp",
   jsonld: catalogLD("Demolition & Scrap Metal Dump Trailers", "/scrap-metal-demolition/", [
     {
       name: "Demolition End Dump Trailer (HARDOX 450)",
-      image: "/assets/img/demolition-end-dump-trailer.svg",
-      description: "HARDOX 450 demolition and scrap metal end dump trailer, 80–96 yd³, with a reinforced quarter frame and a choice of spring ride or air ride. 2 axles 26,587 lbs, 3 axles 27,271 lbs.",
+      image: "/assets/img/scrap-end-dump.webp",
+      description: "HARDOX 450 demolition and scrap metal end dump trailer with a reinforced quarter frame and a choice of spring ride or air ride.",
+    },
+    {
+      name: "STECO Type End Dump",
+      image: "/assets/img/scrap-steco-type.webp",
+      description: "STECO type end dump, 80–96 yd³ capacity, configurable from 38 to 42 ft. Originally manufactured by Gallegos for the STECO brand and widely known as the ‘STECO type’ across the U.S. Northeast — New York, New Hampshire, Massachusetts and Rhode Island.",
     },
   ]),
   body: `${pageHero({
     eyebrow: "Scrap Metal &amp; Demolition",
     h1: "Demolition &amp; Scrap Metal Dump Trailers",
-    lead: "Heavy-duty end dump trailers built with HARDOX 450 steel for demolition debris and scrap metal hauling &mdash; reinforced quarter frame, spring or air ride, and capacities from 80 to 96 yd&sup3;.",
+    lead: "Heavy-duty end dump trailers built with HARDOX 450 steel for demolition debris and scrap metal hauling &mdash; reinforced quarter frame, spring or air ride, and capacities from 80 to 96 yd&sup3; &mdash; including the STECO-type end dump the Northeast knows by name.",
     crumb: "Scrap Metal &amp; Demolition",
   })}
 
     <section class="section">
       <div class="container">
 ${product({
-    img: "/assets/img/demolition-end-dump-trailer.svg",
+    img: "/assets/img/scrap-end-dump.webp",
     alt: "Demolition end dump trailer in HARDOX 450 steel for scrap metal and debris",
+    gallery: [
+      { img: "/assets/img/scrap-end-dump-2.webp", alt: "Two-axle demolition end dump trailer" },
+      { img: "/assets/img/scrap-end-dump-3.webp", alt: "Three-axle demolition end dump trailer" },
+    ],
     name: "Demolition End Dump",
     tagline: "A HARDOX 450 scrap metal hauling trailer built for demolition debris.",
     pills: ["Scrap metal hauling trailer", "Demolition debris trailer", "HARDOX 450 dump trailer"],
     specs: [
-      "<b>Capacity:</b> End dump 80 &ndash; 96 yd&sup3;",
-      "<b>2 axles:</b> 26,587 lbs",
-      "<b>3 axles:</b> 27,271 lbs",
       "<b>Suspension:</b> spring ride or air ride",
       "Built with HARDOX 450 steel &mdash; strong and durable",
       "Designed to load demolition debris and scrap metal",
       "Reinforced quarter frame for added strength",
     ],
   })}
+${product({
+    img: "/assets/img/scrap-steco-type.webp",
+    alt: "STECO type end dump trailer built by Gallegos for scrap metal and demolition",
+    name: "STECO Type End Dump",
+    tagline: "The end dump the Northeast knows by name — originally built by Gallegos for the STECO brand.",
+    reverse: true,
+    pills: ["STECO type", "Northeast favorite", "Scrap &amp; demolition"],
+    specs: [
+      "<b>Capacity:</b> 80 &ndash; 96 yd&sup3;",
+      "<b>Length:</b> configurable from 38 to 42 ft",
+      "Originally manufactured by Gallegos for the STECO brand — the name the trade adopted",
+      "Widely known as the &ldquo;STECO type&rdquo; across the U.S. Northeast: New York, New Hampshire, Massachusetts, Rhode Island and the surrounding region",
+      "Proven end dump design for scrap metal and demolition debris",
+      "Heavy-duty build engineered for high-abrasion loads",
+    ],
+  })}
+      </div>
+    </section>
+
+    <section class="section steel-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Wear steel options</span>
+          <h2>Choose your HARDOX&reg; wear plate</h2>
+          <p class="lead">Every Gallegos dump body can be built in your choice of premium HARDOX&reg; wear steel &mdash; matched to how abrasive your loads really are.</p>
+        </div>
+        <div class="steel-grid">
+          <div class="steel-card">
+            <img src="/assets/img/hardox-450.webp" width="1000" height="750" loading="lazy" alt="HARDOX 450 abrasion-resistant wear steel plate">
+            <div class="steel-body">
+              <h3>HARDOX&reg; 450</h3>
+              <p>The industry standard in abrasion-resistant wear steel &mdash; a proven balance of hardness and toughness for long-lasting demolition and scrap bodies.</p>
+            </div>
+          </div>
+          <div class="steel-card">
+            <img src="/assets/img/hardox-500tuf.webp" width="1000" height="750" loading="lazy" alt="HARDOX 500 Tuf next-generation wear steel">
+            <div class="steel-body">
+              <h3>HARDOX&reg; 500 Tuf</h3>
+              <p>A harder, tougher next-generation wear steel &mdash; extends body life in the most abrasive loads and lets you build lighter without giving up impact strength.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -575,16 +644,16 @@ pages.push({
   description:
     "Belly dump and California Dirt Dauber set trailers in HARDOX 450 for aggregates and asphalt. Pneumatic door opening, HUTCH or Hendrickson suspension, Accuride or Alcoa wheels. Built in Laredo, TX.",
   canonical: "/construction-aggregates/",
-  ogImage: "/assets/img/belly-dump-trailer.svg",
+  ogImage: "/assets/img/construction-bottom-dump.webp",
   jsonld: catalogLD("Belly Dump & Transfer Dump Trailers", "/construction-aggregates/", [
     {
       name: "Belly / Bottom Dump Trailer (HARDOX 450)",
-      image: "/assets/img/belly-dump-trailer.svg",
+      image: "/assets/img/construction-bottom-dump.webp",
       description: "HARDOX 450 belly / bottom dump trailer with pneumatic door opening, HUTCH Spring or Hendrickson Intraax suspension and Accuride or Alcoa wheels. For aggregates and asphalt.",
     },
     {
       name: "California Dirt Dauber Set",
-      image: "/assets/img/california-dirt-dauber-set.svg",
+      image: "/assets/img/construction-bottom-dump-2.webp",
       description: "California Dirt Dauber dump box set, 26 yd³, unit weight 10,500 lbs, in hybrid aluminum and stainless-steel wall combinations with super single or dual tires.",
     },
   ]),
@@ -598,7 +667,7 @@ pages.push({
     <section class="section">
       <div class="container">
 ${product({
-    img: "/assets/img/belly-dump-trailer.svg",
+    img: "/assets/img/construction-bottom-dump.webp",
     alt: "Belly bottom dump trailer in HARDOX 450 for aggregates and asphalt",
     name: "Belly / Bottom Dump Trailer",
     tagline: "Built for aggregates and asphalt, with pneumatic door opening.",
@@ -612,7 +681,7 @@ ${product({
     ],
   })}
 ${product({
-    img: "/assets/img/california-dirt-dauber-set.svg",
+    img: "/assets/img/construction-bottom-dump-2.webp",
     alt: "California Dirt Dauber set dump trailers with aluminum and stainless steel walls",
     name: "California Dirt Dauber Set",
     tagline: "A versatile dump box set with a wide range of build combinations.",
@@ -704,9 +773,11 @@ pages.push({
           <div class="form-card">
             <h2 class="mt-0">Request a quote</h2>
             <p class="lead" style="font-size:1rem;">Describe your new equipment and we'll be in touch shortly.</p>
-            <!-- To enable delivery: create a free form endpoint (e.g. formspree.io)
-                 and replace YOUR_FORM_ID below with your endpoint. See README. -->
-            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="8d4ab1e4-da84-43b9-9388-45d005a95463">
+              <input type="hidden" name="subject" value="New quote request — gallegossales.com">
+              <input type="hidden" name="from_name" value="Gallegos Trailers Website">
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="field">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" autocomplete="name" required>
@@ -739,6 +810,14 @@ pages.push({
               <div>
                 <h3>WhatsApp</h3>
                 <a href="${WHATSAPP}" rel="noopener">Message us on WhatsApp</a>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+              <div>
+                <h3>Email</h3>
+                <a href="mailto:edson.resendiz@gallegos.com.mx">edson.resendiz@gallegos.com.mx</a>
               </div>
             </div>
 
