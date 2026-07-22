@@ -424,12 +424,12 @@ pages.push({
     {
       name: "Steel Pneumatic Dry Bulk Trailer",
       image: "/assets/img/dry-bulk-pneumatic.webp",
-      description: "Steel pneumatic dry bulk trailer, 1,040–1,400 ft³, for cement, lime and fine powders. 2 axles 13,448 lbs, 3 axles 17,857 lbs.",
+      description: "Steel pneumatic dry bulk trailer, 1,040–1,400 ft³, for cement, lime and fine powders.",
     },
     {
       name: "Aluminum Pneumatic Dry Bulk Trailer",
       image: "/assets/img/dry-bulk-pneumatic-2.webp",
-      description: "Lightweight aluminum pneumatic dry bulk trailer, 1,040–1,400 ft³, with the lowest tare weight on the market. 2 axles 9,920 lbs, 3 axles 14,550 lbs.",
+      description: "Lightweight aluminum pneumatic dry bulk trailer, 1,040–1,400 ft³, with the lowest tare weight on the market.",
     },
   ]),
   body: `${pageHero({
@@ -449,8 +449,6 @@ ${product({
     pills: ["Cement", "Lime", "Fine powders"],
     specs: [
       "<b>Capacity:</b> 1,040 &ndash; 1,400 ft&sup3;",
-      "<b>2 axles:</b> 13,448 lbs",
-      "<b>3 axles:</b> 17,857 lbs",
       "Ideal for cement, lime and fine dry powders",
     ],
   })}
@@ -463,8 +461,6 @@ ${product({
     pills: ["Lowest tare weight", "High capacity", "Easy to clean"],
     specs: [
       "<b>Capacity:</b> 1,040 &ndash; 1,400 ft&sup3;",
-      "<b>2 axles:</b> 9,920 lbs",
-      "<b>3 axles:</b> 14,550 lbs",
       "Lowest tare weight on the market for maximum payload",
       "Recognized for high load capacity and efficient loading &amp; unloading",
       "Robust, easy to clean, reliable and durable",
@@ -562,7 +558,6 @@ ${product({
     pills: ["Aluminum water vac", "Permian Basin", "Produced water hauling", "Oilfield fluid transport"],
     specs: [
       "<b>Capacity:</b> 130 &ndash; 150 Bbl",
-      "<b>2 axles:</b> 17,857 lbs",
       "Built in lightweight aluminum or stainless steel (ASTM A36)",
       "Two-piece cylindrical design with a single circumferential seam",
       "Purpose-engineered for chemical waste, oilfield mud and water",
