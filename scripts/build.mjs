@@ -204,7 +204,7 @@ const TRAILER_TYPES = [
 // Warranty submissions are delivered here (kept out of the visible page).
 // Web3Forms separates multiple recipients with a semicolon; ccemail is a
 // Web3Forms Pro feature (see README).
-const WARRANTY_CC = "garantias@gallegos.com.mx;edresendizg@icloud.com";
+const WARRANTY_CC = "";
 function web3Hidden(subject, cc) {
   const ccLine = cc
     ? `\n              <input type="hidden" name="ccemail" value="${cc}">`
