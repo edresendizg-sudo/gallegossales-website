@@ -201,10 +201,17 @@ const TRAILER_TYPES = [
   "Half Round End Dump",
   "Other",
 ];
-function web3Hidden(subject) {
+// Warranty submissions are delivered here (kept out of the visible page).
+// Web3Forms separates multiple recipients with a semicolon; ccemail is a
+// Web3Forms Pro feature (see README).
+const WARRANTY_CC = "garantias@gallegos.com.mx;edresendizg@icloud.com";
+function web3Hidden(subject, cc) {
+  const ccLine = cc
+    ? `\n              <input type="hidden" name="ccemail" value="${cc}">`
+    : "";
   return `              <input type="hidden" name="access_key" value="${ACCESS_KEY}">
               <input type="hidden" name="subject" value="${subject}">
-              <input type="hidden" name="from_name" value="Gallegos Trailers Website">
+              <input type="hidden" name="from_name" value="Gallegos Trailers Website">${ccLine}
               <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">`;
 }
 function fld(id, label, o = {}) {
@@ -1002,7 +1009,7 @@ pages.push({
           <h2 class="mt-0">Register your trailer</h2>
           <p class="lead" style="font-size:1rem;">Fields marked <span class="req">*</span> are required.</p>
           <form id="registration-form" class="lead-form" action="https://api.web3forms.com/submit" method="POST" data-success="Thank you — your warranty registration has been submitted. We'll confirm your coverage shortly.">
-${web3Hidden("New warranty registration — gallegossales.com")}
+${web3Hidden("New warranty registration — gallegossales.com", WARRANTY_CC)}
             <div class="form-grid">
 ${fld("owner", "Owner / Company name", { required: true, autocomplete: "organization" })}
 ${fld("contact", "Contact name", { required: true, autocomplete: "name" })}
@@ -1055,7 +1062,7 @@ pages.push({
           <h2 class="mt-0">Submit a warranty claim</h2>
           <p class="lead" style="font-size:1rem;">Fields marked <span class="req">*</span> are required.</p>
           <form id="claim-form" class="lead-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" data-success="Thank you — your warranty claim has been received. We'll review it and reply with a warranty authorization number and next steps.">
-${web3Hidden("New warranty claim — gallegossales.com")}
+${web3Hidden("New warranty claim — gallegossales.com", WARRANTY_CC)}
             <div class="form-grid">
 ${fld("owner", "Owner / Company name", { required: true, autocomplete: "organization" })}
 ${fld("contact", "Contact name", { required: true, autocomplete: "name" })}
