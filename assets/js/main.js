@@ -23,20 +23,22 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---- Contact form (AJAX submit + graceful fallback) ----
-     Works out of the box with Formspree. Set the form's `action`
-     to your endpoint (see /contact/index.html). If no JS endpoint
-     is configured, the form still submits normally. */
-  var form = document.getElementById("contact-form");
-  if (form) {
-    var status = document.getElementById("form-status");
-    var endpoint = form.getAttribute("action") || "";
-    var isConfigured = endpoint && endpoint.indexOf("YOUR_FORM_ID") === -1;
+  /* ---- Lead / warranty forms (AJAX submit + graceful fallback) ----
+     Any <form class="lead-form"> is enhanced (contact, warranty
+     registration, warranty claims). Posts to its own `action`
+     (Web3Forms). A per-form success line can be set via data-success.
+     Status is shown in the form's own .form-status element; file
+     uploads are supported. */
+  var forms = document.querySelectorAll("form.lead-form");
+  Array.prototype.forEach.call(forms, function (form) {
+    var status = form.querySelector(".form-status");
+    var successMsg = form.getAttribute("data-success") ||
+      "Thank you — your submission has been received. We'll be in touch shortly.";
 
     form.addEventListener("submit", function (e) {
-      if (!isConfigured) return; // let the browser handle it (or configure endpoint)
       e.preventDefault();
 
+      var endpoint = form.getAttribute("action") || "";
       var btn = form.querySelector('button[type="submit"]');
       var original = btn ? btn.textContent : "";
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
@@ -52,7 +54,7 @@
             form.reset();
             if (status) {
               status.className = "form-status ok";
-              status.textContent = "Thank you — your message has been sent. We'll be in touch shortly.";
+              status.textContent = successMsg;
             }
           } else {
             throw new Error("Request failed");
@@ -69,5 +71,5 @@
           if (btn) { btn.disabled = false; btn.textContent = original; }
         });
     });
-  }
+  });
 })();
