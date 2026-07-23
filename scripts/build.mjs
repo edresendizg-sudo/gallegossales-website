@@ -410,7 +410,7 @@ pages.push({
           <div class="feature">
             <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 8 8 8 8s8-3 8-8V6z"/></svg></span>
             <h3>Built to last</h3>
-            <p>HARDOX 450 steel, ASTM A36 and stainless construction engineered for high-abrasion, heavy-duty loads.</p>
+            <p>HARDOX 450 steel, ASTM A36 and stainless construction engineered for high-abrasion, heavy-duty loads &mdash; with HUTCHENS, HENDRICKSON or ROCKWELL suspensions, JOST or Holland landing gear, and models built to your spec.</p>
           </div>
           <div class="feature">
             <span class="ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -740,14 +740,14 @@ pages.push({
   active: "construction",
   title: "Half Round End Dump Trailers | Gallegos Trailer Sales",
   description:
-    "Half round end dump trailers designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications — simple, maintenance-free design, rugged reliability and single point suspension. Built in Laredo, TX.",
+    "Half round end dump trailers designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications — simple, maintenance-free design and rugged reliability. Built in Laredo, TX.",
   canonical: "/construction-aggregates/",
   ogImage: "/assets/img/construction-half-round.webp",
   jsonld: catalogLD("Half Round End Dump Trailers", "/construction-aggregates/", [
     {
       name: "Half Round End Dump",
       image: "/assets/img/construction-half-round.webp",
-      description: "Half round end dump designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications — trusted for its simple, maintenance-free design and rugged reliability. Single point suspension.",
+        description: "Half round end dump designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications — trusted for its simple, maintenance-free design and rugged reliability.",
     },
   ]),
   body: `${pageHero({
@@ -766,9 +766,7 @@ ${product({
     tagline: "Simple, maintenance-free design with rugged reliability.",
     pills: ["Construction", "Demolition", "Aggregates", "Agriculture &amp; industrial"],
     specs: [
-      "Designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications &mdash; trusted for their simple and maintenance-free design and rugged reliability",
-      "<b>Suspension:</b> Single Point",
-    ],
+      "Designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications &mdash; trusted for their simple and maintenance-free design and rugged reliability",    ],
   })}
       </div>
     </section>
