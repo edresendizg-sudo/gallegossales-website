@@ -1,0 +1,14 @@
+name: IndexNow ping
+on:
+  push:
+    branches: [main]
+    paths: ['**/*.html', 'sitemap.xml']
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit URLs to IndexNow
+        run: curl -sS --fail -X POST 'https://api.indexnow.org/indexnow' -H 'Content-Type: application/json; charset=utf-8' -d '{"host":"gallegossales.com","key":"0083787156c9b3f250dbe16bdb48d0f4","keyLocation":"https://gallegossales.com/0083787156c9b3f250dbe16bdb48d0f4.txt","urlList":["https://gallegossales.com/","https://gallegossales.com/bulk/","https://gallegossales.com/single-hopper/","https://gallegossales.com/liquid/","https://gallegossales.com/scrap-metal-demolition/","https://gallegossales.com/construction-aggregates/","https://gallegossales.com/about/","https://gallegossales.com/contact/","https://gallegossales.com/warranty/","https://gallegossales.com/warranty-registration/","https://gallegossales.com/warranty-claims/","https://gallegossales.com/faq/"]}'
