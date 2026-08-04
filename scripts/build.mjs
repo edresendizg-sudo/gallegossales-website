@@ -116,6 +116,14 @@ function page({ path, active, title, description, canonical, jsonld, ogImage, bo
   <meta name="description" content="${description}">
   <link rel="canonical" href="${SITE}${canonical}">
   <meta name="robots" content="${noindex ? "noindex, follow" : "index, follow"}">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5QZGZF8QM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M5QZGZF8QM');
+  </script>
   <meta name="theme-color" content="#26292e">
 
   <meta property="og:type" content="website">
@@ -272,9 +280,9 @@ pages.push({
   path: "/",
   active: "",
   title:
-    "Gallegos Trailer Sales | Semi-Trailers Direct From the Manufacturer in Laredo, TX",
+    "Factory-Direct Semi-Trailers in Laredo, TX | Gallegos",
   description:
-    "New semi-trailers built direct from the factory in Laredo, TX — scrap metal & demolition dump trailers, lightweight aluminum vacuum tanks for oilfield & water hauling, dry bulk pneumatic and aggregate trailers. Call 956-378-5818 for a factory-direct quote.",
+    "New scrap & demolition end dumps, vacuum tanks, dry bulk pneumatics and single hopper trailers — factory-direct from Laredo, TX. Get a quote today.",
   canonical: "/",
   jsonld: {
     "@context": "https://schema.org",
@@ -475,7 +483,7 @@ pages.push({
   active: "bulk",
   title: "Dry Bulk Pneumatic Trailers for Sale in Texas | Gallegos Trailer Sales",
   description:
-    "Steel and aluminum pneumatic dry bulk trailers, 1,040–1,400 ft³, for cement, lime and fine powders. Low tare weight, high capacity. Built direct from the manufacturer in Laredo, TX.",
+    "Steel and aluminum pneumatic dry bulk trailers, 1,040–1,400 ft³, for cement, lime and fine powders. Factory-direct from Laredo, TX — get a quote.",
   canonical: "/bulk/",
   ogImage: "/assets/img/dry-bulk-pneumatic.webp",
   jsonld: catalogLD("Dry Bulk Pneumatic Trailers", "/bulk/", [
@@ -537,7 +545,7 @@ pages.push({
   active: "hopper",
   title: "Single Hopper Pneumatic Trailers for Barite | Gallegos Trailer Sales",
   description:
-    "Single hopper pneumatic trailers for barite, bentonite and dense, high-density powders. Low-tare aluminum build, fast pneumatic load and unload through a single discharge cone. Built direct from the manufacturer in Laredo, TX.",
+    "Single hopper pneumatic trailers for barite, bentonite and dense powders. Low-tare aluminum build, fast load and unload. Get a factory-direct quote.",
   canonical: "/single-hopper/",
   ogImage: "/assets/img/single-hopper-barite.webp",
   jsonld: catalogLD("Single Hopper Pneumatic Trailers", "/single-hopper/", [
@@ -583,9 +591,9 @@ pages.push({
   file: "liquid/index.html",
   path: "/liquid/",
   active: "liquid",
-  title: "Vacuum Tank Trailers for Oilfield & Liquid Hauling | Gallegos Trailer Sales",
+  title: "Vacuum Tank Trailers for Oilfield | Gallegos Trailers",
   description:
-    "Lightweight aluminum and stainless vacuum tank trailers, 130–150 Bbl, for oilfield fluid transport, produced water hauling and chemical waste. USDOT 406 / ASME / R-Stamp certified. Permian Basin ready.",
+    "Aluminum & stainless 130–150 Bbl vacuum tank trailers for produced water and oilfield fluids. USDOT 406 / ASME certified. Request a quote.",
   canonical: "/liquid/",
   ogImage: "/assets/img/vacuum-tank.webp",
   jsonld: catalogLD("Vacuum Tank Trailers", "/liquid/", [
@@ -642,9 +650,9 @@ pages.push({
   file: "scrap-metal-demolition/index.html",
   path: "/scrap-metal-demolition/",
   active: "scrap",
-  title: "Demolition & Scrap Metal Dump Trailers | HARDOX 450 | Gallegos Trailer Sales",
+  title: "Demolition & Scrap Metal End Dumps | Gallegos Trailers",
   description:
-    "Demolition end dump trailers, 80–96 yd³, built with HARDOX 450 steel and a reinforced quarter frame for demolition debris and scrap metal hauling. Spring ride or air ride — including the STECO-type end dump known across the U.S. Northeast. Made in Laredo, TX.",
+    "HARDOX 450 end dumps for demolition and scrap — including the STECO type the Northeast knows. Spring or air ride. Get a factory-direct quote.",
   canonical: "/scrap-metal-demolition/",
   ogImage: "/assets/img/scrap-end-dump.webp",
   jsonld: catalogLD("Demolition & Scrap Metal Dump Trailers", "/scrap-metal-demolition/", [
@@ -699,6 +707,7 @@ ${product({
       "Widely known as the &ldquo;STECO type&rdquo; across the U.S. Northeast: New York, New Hampshire, Massachusetts, Rhode Island and the surrounding region",
       "Proven end dump design for scrap metal and demolition debris",
       "Heavy-duty build engineered for high-abrasion loads",
+      '<a href="/steco-type-end-dump/"><b>Read the full STECO Type story &rarr;</b></a>',
     ],
   })}
       </div>
@@ -733,6 +742,63 @@ ${product({
 ${ctaBand}`,
 });
 
+// ---------- STECO TYPE (dedicated) ----------
+pages.push({
+  file: "steco-type-end-dump/index.html",
+  path: "/steco-type-end-dump/",
+  active: "scrap",
+  title: "STECO Type End Dump Trailers for Sale | Gallegos Trailers",
+  description:
+    "The STECO type end dump the Northeast knows — 80–96 yd³, 38–42 ft, originally built by Gallegos for the STECO brand. New units, factory-direct. Get a quote.",
+  canonical: "/steco-type-end-dump/",
+  ogImage: "/assets/img/scrap-steco-type.webp",
+  jsonld: catalogLD("STECO Type End Dump Trailers", "/steco-type-end-dump/", [
+    {
+      name: "STECO Type End Dump",
+      image: "/assets/img/scrap-steco-type.webp",
+      description: "STECO type end dump, 80–96 yd³ capacity, configurable from 38 to 42 ft. Originally manufactured by Gallegos for the STECO brand and widely known as the ‘STECO type’ across the U.S. Northeast — New York, New Hampshire, Massachusetts and Rhode Island.",
+    },
+  ]),
+  body: `${pageHero({
+    eyebrow: "STECO Type",
+    h1: "STECO Type End Dump Trailers",
+    lead: "The end dump the Northeast knows by name &mdash; originally built by Gallegos for the STECO brand, and still built today with the same proven design. New units, factory-direct.",
+    crumb: "STECO Type End Dump",
+  })}
+
+    <section class="section">
+      <div class="container">
+        <div class="prose">
+          <h2>The story behind the &ldquo;STECO type&rdquo;</h2>
+          <p>For years, Gallegos manufactured end dump trailers for the STECO brand &mdash; and the trade adopted the name. Across the U.S. Northeast &mdash; New York, New Hampshire, Massachusetts, Rhode Island and the surrounding region &mdash; scrap and demolition haulers still ask for this unit as the &ldquo;STECO type.&rdquo; Today you can buy the same proven design directly from the manufacturer that built it.</p>
+          <p>The STECO type is a heavy-duty end dump engineered for high-abrasion loads: scrap metal, demolition debris and mixed C&amp;D. It is available with a capacity of 80 to 96 cubic yards and lengths configurable from 38 to 42 feet, and it can be built in your choice of HARDOX&reg; 450 or HARDOX&reg; 500 Tuf wear steel.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+${product({
+    img: "/assets/img/scrap-steco-type.webp",
+    alt: "STECO type end dump trailer built by Gallegos for scrap metal and demolition",
+    name: "STECO Type End Dump",
+    tagline: "The Northeast favorite for scrap metal and demolition debris.",
+    pills: ["STECO type", "Northeast favorite", "Scrap &amp; demolition"],
+    specs: [
+      "<b>Capacity:</b> 80 &ndash; 96 yd&sup3;",
+      "<b>Length:</b> configurable from 38 to 42 ft",
+      "Originally manufactured by Gallegos for the STECO brand — the name the trade adopted",
+      "Proven end dump design for scrap metal and demolition debris",
+      "Available in HARDOX&reg; 450 or HARDOX&reg; 500 Tuf wear steel",
+      'Also see our <a href="/scrap-metal-demolition/">demolition &amp; scrap metal end dumps</a>',
+    ],
+  })}
+      </div>
+    </section>
+
+${ctaBand}`,
+});
+
 // ---------- CONSTRUCTION / AGGREGATES ----------
 pages.push({
   file: "construction-aggregates/index.html",
@@ -740,7 +806,7 @@ pages.push({
   active: "construction",
   title: "Half Round End Dump Trailers | Gallegos Trailer Sales",
   description:
-    "Half round end dump trailers designed and manufactured for construction, demolition, aggregates, agriculture and industrial applications — simple, maintenance-free design and rugged reliability. Built in Laredo, TX.",
+    "Half round end dumps for construction, demolition, aggregates and agriculture — simple, maintenance-free design. Factory-direct from Laredo, TX.",
   canonical: "/construction-aggregates/",
   ogImage: "/assets/img/construction-half-round.webp",
   jsonld: catalogLD("Half Round End Dump Trailers", "/construction-aggregates/", [
@@ -781,7 +847,7 @@ pages.push({
   active: "about",
   title: "About Gallegos Trailer Sales | Manufacturer-Direct Trailers in Laredo, TX",
   description:
-    "Gallegos Trailer Sales specializes in trailers for bulk, liquid, scrap metal and demolition hauling — built direct from the manufacturer for durability and performance. Based in Laredo, TX.",
+    "Gallegos Trailer Sales builds manufacturer-direct trailers for scrap, oilfield, dry bulk and aggregates in Laredo, TX — certified, factory pricing.",
   canonical: "/about/",
   body: `${pageHero({
     eyebrow: "About Us",
@@ -1041,7 +1107,7 @@ pages.push({
   active: "warranty",
   title: "Warranty Claims | Gallegos Trailer Sales",
   description:
-    "File a warranty claim for your Gallegos trailer. Submit your serial number, a description of the issue and photos. Do not begin repairs before receiving a warranty authorization number.",
+    "File a warranty claim for your Gallegos trailer — submit your serial number, issue description and photos to get an authorization number.",
   canonical: "/warranty-claims/",
   body: `${pageHero({
     eyebrow: "Warranty",
@@ -1133,7 +1199,7 @@ pages.push({
   active: "faq",
   title: "Frequently Asked Questions | Gallegos Trailer Sales",
   description:
-    "Answers about buying Gallegos semi-trailers in Texas: where to buy, trailer types, aluminum vacuum tanks, HARDOX 450 dump trailers, pricing and how to get a factory-direct quote. Call 956-378-5818.",
+    "Answers about buying Gallegos semi-trailers: quotes, delivery across Texas and the U.S., certifications, HARDOX steel and more.",
   canonical: "/faq/",
   jsonld: {
     "@context": "https://schema.org",
