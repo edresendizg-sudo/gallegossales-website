@@ -185,13 +185,12 @@ function catalogLD(pageName, pageUrl, products) {
         description: p.description,
         image: SITE + p.image,
         url: SITE + pageUrl,
-        offers: {
-          "@type": "Offer",
-          availability: "https://schema.org/InStock",
-          priceCurrency: "USD",
-          seller: { "@id": SITE + "/#business" },
-          areaServed: "US",
-        },
+        // No `offers` block on purpose: Google requires a concrete `price` (or
+        // priceSpecification.price) inside an Offer. These units are quoted per
+        // build and we deliberately don't publish prices, so a price-less Offer
+        // is flagged invalid in Search Console and produces no rich result
+        // anyway. The Product is declared without it.
+        manufacturer: { "@type": "Organization", name: "Gallegos", "@id": SITE + "/#business" },
       })),
     ],
   };
