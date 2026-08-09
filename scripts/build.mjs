@@ -80,7 +80,7 @@ const footer = `  <footer class="site-footer">
             <li><a href="/contact/">Contact</a></li>
             <li><a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a></li>
             <li><a href="${WHATSAPP}" rel="noopener">WhatsApp</a></li>
-            <li>Laredo, TX</li>
+            <li>101 Blue Ridge Pkwy<br>Laredo, TX 78045</li>
           </ul>
         </div>
       </div>
@@ -304,12 +304,15 @@ pages.push({
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "101 Blue Ridge Pkwy",
       addressLocality: "Laredo",
       addressRegion: "TX",
       postalCode: "78045",
       addressCountry: "US",
     },
-    geo: { "@type": "GeoCoordinates", latitude: 27.5306, longitude: -99.4803 },
+    // Verified against the actual street location on the Mines Rd (FM 1472)
+    // industrial corridor — not the generic Laredo city centroid.
+    geo: { "@type": "GeoCoordinates", latitude: 27.6400, longitude: -99.5459 },
     areaServed: [
       { "@type": "State", name: "Texas" },
       { "@type": "Place", name: "Permian Basin" },
@@ -908,8 +911,10 @@ pages.push({
     telephone: "+1-956-378-5818",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "101 Blue Ridge Pkwy",
       addressLocality: "Laredo",
       addressRegion: "TX",
+      postalCode: "78045",
       addressCountry: "US",
     },
     areaServed: "US",
@@ -997,7 +1002,7 @@ pages.push({
               <span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
               <div>
                 <h3>Location</h3>
-                <p>Laredo, TX</p>
+                <p><a href="https://maps.google.com/?q=101+Blue+Ridge+Pkwy,+Laredo,+TX+78045" rel="noopener">101 Blue Ridge Pkwy<br>Laredo, TX 78045</a></p>
               </div>
             </div>
 
