@@ -500,7 +500,7 @@ pages.push({
   file: "bulk/index.html",
   path: "/bulk/",
   active: "bulk",
-  title: "Dry Bulk Pneumatic Trailers for Sale in Texas | Gallegos Trailer Sales",
+  title: "Dry Bulk Pneumatic Trailers for Sale in Texas | Gallegos",
   description:
     "Steel and aluminum pneumatic dry bulk trailers, 1,040–1,400 ft³, for cement, lime and fine powders. Factory-direct from Laredo, TX — get a quote.",
   canonical: "/bulk/",
@@ -562,7 +562,7 @@ pages.push({
   file: "single-hopper/index.html",
   path: "/single-hopper/",
   active: "hopper",
-  title: "Single Hopper Pneumatic Trailers for Barite | Gallegos Trailer Sales",
+  title: "Single Hopper Pneumatic Trailers for Barite | Gallegos",
   description:
     "Single hopper pneumatic trailers for barite, bentonite and dense powders. Low-tare aluminum build, fast load and unload. Get a factory-direct quote.",
   canonical: "/single-hopper/",
@@ -864,7 +864,7 @@ pages.push({
   file: "about/index.html",
   path: "/about/",
   active: "about",
-  title: "About Gallegos Trailer Sales | Manufacturer-Direct Trailers in Laredo, TX",
+  title: "About Gallegos Trailer Sales | Laredo, TX Manufacturer",
   description:
     "Gallegos Trailer Sales builds manufacturer-direct trailers for scrap, oilfield, dry bulk and aggregates in Laredo, TX — certified, factory pricing.",
   canonical: "/about/",
