@@ -163,9 +163,18 @@ function pageHero({ eyebrow, h1, lead, crumb }) {
     </section>`;
 }
 
-// Structured data for a product category page: breadcrumb + one Product per
-// item, each branded "Gallegos" and offered by the business. Improves rich
-// results and helps answer engines associate the products with the site.
+// Structured data for a product category page: breadcrumb + an ItemList of the
+// units on the page, so search and answer engines can still enumerate what we
+// build here.
+//
+// Deliberately NOT schema.org/Product: Google requires every Product node to
+// carry `offers` (with a real price), `review`, or `aggregateRating`, and
+// flags it invalid in Search Console otherwise. These trailers are quoted per
+// build — we don't publish prices — and inventing reviews or ratings is both
+// dishonest and against Google's guidelines. A price-less Product yields no
+// rich result anyway, so an ItemList is the honest, valid representation.
+// If we ever publish "from" pricing or collect real customer reviews, we can
+// reinstate Product with the required field and become snippet-eligible.
 function catalogLD(pageName, pageUrl, products) {
   return {
     "@context": "https://schema.org",
@@ -177,21 +186,20 @@ function catalogLD(pageName, pageUrl, products) {
           { "@type": "ListItem", position: 2, name: pageName, item: SITE + pageUrl },
         ],
       },
-      ...products.map((p) => ({
-        "@type": "Product",
-        name: p.name,
-        brand: { "@type": "Brand", name: "Gallegos" },
-        category: pageName,
-        description: p.description,
-        image: SITE + p.image,
-        url: SITE + pageUrl,
-        // No `offers` block on purpose: Google requires a concrete `price` (or
-        // priceSpecification.price) inside an Offer. These units are quoted per
-        // build and we deliberately don't publish prices, so a price-less Offer
-        // is flagged invalid in Search Console and produces no rich result
-        // anyway. The Product is declared without it.
-        manufacturer: { "@type": "Organization", name: "Gallegos", "@id": SITE + "/#business" },
-      })),
+      {
+        "@type": "ItemList",
+        name: pageName,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        numberOfItems: products.length,
+        itemListElement: products.map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: p.name,
+          description: p.description,
+          image: SITE + p.image,
+          url: SITE + pageUrl,
+        })),
+      },
     ],
   };
 }
@@ -326,12 +334,21 @@ pages.push({
     ],
     description:
       "New semi-trailers built direct from the manufacturer for scrap metal, demolition, oilfield & liquid, dry bulk and aggregate hauling. Based in Laredo, TX; serving Texas, the Permian Basin and the United States.",
-    makesOffer: [
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Demolition & Scrap Metal Dump Trailers", url: SITE + "/scrap-metal-demolition/" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Aluminum Vacuum Tank Trailers", url: SITE + "/liquid/" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Dry Bulk Pneumatic Trailers", url: SITE + "/bulk/" } },
-      { "@type": "Offer", itemOffered: { "@type": "Product", name: "Belly Dump & Transfer Dump Trailers", url: SITE + "/construction-aggregates/" } },
-    ],
+    // Catalog of what the dealer builds. Uses OfferCatalog + ListItem rather
+    // than Offer + Product: a Product node without price/review/rating is
+    // flagged invalid by Google (see catalogLD above for the full reasoning).
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Semi-Trailer Catalog",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Demolition & Scrap Metal Dump Trailers", url: SITE + "/scrap-metal-demolition/" },
+        { "@type": "ListItem", position: 2, name: "Aluminum Vacuum Tank Trailers", url: SITE + "/liquid/" },
+        { "@type": "ListItem", position: 3, name: "Dry Bulk Pneumatic Trailers", url: SITE + "/bulk/" },
+        { "@type": "ListItem", position: 4, name: "Single Hopper / Barite Trailers", url: SITE + "/single-hopper/" },
+        { "@type": "ListItem", position: 5, name: "STECO Type End Dump Trailers", url: SITE + "/steco-type-end-dump/" },
+        { "@type": "ListItem", position: 6, name: "Half Round End Dump Trailers", url: SITE + "/construction-aggregates/" },
+      ],
+    },
   },
   body: `    <section class="hero hero-home">
       <div class="container">
